@@ -378,7 +378,10 @@ Keepalive a user data stream to prevent a time out. User data streams will close
 
 **Parameters:**
 
-NONE
+Name | Type | Mandatory | Description
+------------ | ------------ | ------------ | ------------
+recvWindow | LONG | NO |
+timestamp | LONG | YES |
 
 **Response:**
 ```javascript
@@ -396,7 +399,10 @@ Close out a user data stream.
 
 **Parameters:**
 
-NONE
+Name | Type | Mandatory | Description
+------------ | ------------ | ------------ | ------------
+recvWindow | LONG | NO |
+timestamp | LONG | YES |
 
 **Response:**
 
