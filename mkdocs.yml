@@ -1,0 +1,14 @@
+site_name: Future API Docs
+nav:
+    - README.md
+    - README_CN.md
+    - rest-api.md
+    - rest-api_CN.md
+    - user-data-stream.md 
+    - user-data-stream_CN.md
+    - web-socket-streams.md 
+    - web-socket-streams_CN.md 
+    - errors.md
+theme: readthedocs
+#theme: windmill
+#extra_css: [extra.css]
