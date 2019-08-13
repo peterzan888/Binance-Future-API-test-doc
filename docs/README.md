@@ -3,9 +3,3 @@
 * The use of any other streams, endpoints, parameters, or payloads, etc. is **not supported**; **use them at your own risk and with no guarantees.**
 
 
-Name | Description
------------- | ------------ 
-[rest-api.md](./rest-api.md) | Details on the Rest API
-[errors.md](./errors.md) | Descriptions of possible error messages from the Rest API
-[web-socket-streams.md](./web-socket-streams.md) | Details on available streams and payloads
-[user-data-stream.md](./user-data-stream.md) | Details on the dedicated account stream
