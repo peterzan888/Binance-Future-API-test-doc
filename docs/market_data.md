@@ -1,7 +1,7 @@
 
-# Rest API
-## General endpoints
-### Test connectivity
+# Rest API endpoints
+
+## Test connectivity
 ```
 GET /fapi/v1/ping
 ```
@@ -18,7 +18,7 @@ NONE
 {}
 ```
 
-### Check server time
+## Check server time
 ```
 GET /fapi/v1/time
 ```
@@ -37,7 +37,7 @@ NONE
 }
 ```
 
-### Exchange information
+## Exchange information
 ```
 GET /fapi/v1/exchangeInfo
 ```
@@ -114,8 +114,8 @@ NONE
 
 ```
 
-## Market Data endpoints
-### Order book
+
+## Order book
 ```
 GET /fapi/v1/depth
 ```
@@ -159,7 +159,7 @@ limit | INT | NO | Default 100; max 1000. Valid limits:[5, 10, 20, 50, 100, 500,
 }
 ```
 
-### Recent trades list
+## Recent trades list
 ```
 GET /fapi/v1/trades
 ```
@@ -190,11 +190,11 @@ limit | INT | NO | Default 500; max 1000.
 ]
 ```
 
-### Old trade lookup (MARKET_DATA)
+## Old trades lookup
 ```
 GET /fapi/v1/historicalTrades
 ```
-Get older trades.
+Get older market historical trades.
 
 **Weight:**
 5
@@ -222,7 +222,7 @@ fromId | LONG | NO | TradeId to fetch from. Default gets most recent trades.
 ]
 ```
 
-### Compressed/Aggregate trades list
+## Compressed/Aggregate trades list
 ```
 GET /fapi/v1/aggTrades
 ```
@@ -262,7 +262,7 @@ limit | INT | NO | Default 500; max 1000.
 ]
 ```
 
-### Kline/Candlestick data
+## Kline/Candlestick data
 ```
 GET /fapi/v1/klines
 ```
@@ -306,7 +306,7 @@ limit | INT | NO | Default 500; max 1000.
 ```
 
 
-### Mark price
+## Mark price
 ```
 GET /fapi/v1/premiumIndex
 ```
@@ -333,7 +333,7 @@ symbol | STRING | YES |
 }
 ```
 
-### 24hr ticker price change statistics
+## 24hr ticker price change statistics
 ```
 GET /fapi/v1/ticker/24hr
 ```
@@ -374,7 +374,7 @@ symbol | STRING | NO |
 ```
 
 
-### Symbol price ticker
+## Symbol price ticker
 ```
 GET /fapi/v1/ticker/price
 ```
@@ -432,7 +432,7 @@ symbol | STRING | YES |
 
 
 # Web-Socket Streams
-## General WSS information
+
 * The base endpoint is: **wss://testnet.binancefuture.com**
 * Streams can be access either in a single raw stream or a combined stream
 * Combined streams are accessed at **/stream?streams=\<streamName1\>/\<streamName2\>/\<streamName3\>**

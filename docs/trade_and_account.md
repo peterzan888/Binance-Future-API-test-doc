@@ -1,5 +1,5 @@
 # Rest API Endpoints
-## New order  (TRADE)
+## New order  (*TRADE*)
 ```
 POST /fapi/v1/order  (HMAC SHA256)
 ```
@@ -34,7 +34,7 @@ Type | Additional mandatory parameters
 
 
 
-## Query order (USER_DATA)
+## Query order (*USER_DATA*)
 ```
 GET /fapi/v1/order (HMAC SHA256)
 ```
@@ -80,7 +80,7 @@ Notes:
 }
 ```
 
-## Cancel order (TRADE)
+## Cancel order (*TRADE*)
 ```
 DELETE /fapi/v1/order  (HMAC SHA256)
 ```
@@ -122,7 +122,7 @@ Either `orderId` or `origClientOrderId` must be sent.
 }
 ```
 
-## Current open orders (USER_DATA)
+## Current open orders (*USER_DATA*)
 ```
 GET /fapi/v1/openOrders  (HMAC SHA256)
 ```
@@ -164,7 +164,7 @@ timestamp | LONG | YES |
 ]
 ```
 
-## All orders (USER_DATA)
+## All orders (*USER_DATA*)
 ```
 GET /fapi/v1/allOrders (HMAC SHA256)
 ```
@@ -213,7 +213,7 @@ timestamp | LONG | YES |
 ]
 ```
 
-## Account information (USER_DATA)
+## Account information (*USER_DATA*)
 ```
 GET /fapi/v1/account (HMAC SHA256)
 ```
@@ -253,7 +253,7 @@ timestamp | LONG | YES |
 }
 ```
 
-## Position information (USER_DATA)
+## Position information (*USER_DATA*)
 ```
 GET /fapi/v1/positionRisk (HMAC SHA256)
 ```
@@ -283,7 +283,7 @@ timestamp | LONG | YES |
 ]
 ```
 
-## Account trade list (USER_DATA)
+## Account trade list (*USER_DATA*)
 ```
 GET /fapi/v1/userTrades  (HMAC SHA256)
 ```
@@ -342,7 +342,7 @@ Otherwise most recent orders are returned.
 * User data stream payloads are **not guaranteed** to be in order during heavy periods; **make sure to order your updates using E**
 
 
-## User data stream endpoints
+## User Data Stream endpoints
 
 ### Start user data stream (USER_STREAM)
 ```

@@ -210,6 +210,7 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 **限制种类 (rateLimitType)**
 
 * REQUESTS_WEIGHT  单位时间请求权重之和上限
+
     ```json
     {
       "rateLimitType": "REQUEST_WEIGHT",
@@ -219,6 +220,7 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
     }
     ```
 * ORDERS    单位时间下单(撤单)次数上限
+
     ```json
     {
       "rateLimitType": "ORDERS",
