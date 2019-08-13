@@ -58,13 +58,31 @@
     <a class="current" href="./">MARKET DATA</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#rest-api">Rest API</a></li>
+    <li class="toctree-l2"><a href="#rest-api-endpoints">Rest API endpoints</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#general-endpoints">General endpoints</a></li>
+            <li><a class="toctree-l3" href="#test-connectivity">Test connectivity</a></li>
         
-            <li><a class="toctree-l3" href="#market-data-endpoints">Market Data endpoints</a></li>
+            <li><a class="toctree-l3" href="#check-server-time">Check server time</a></li>
+        
+            <li><a class="toctree-l3" href="#exchange-information">Exchange information</a></li>
+        
+            <li><a class="toctree-l3" href="#order-book">Order book</a></li>
+        
+            <li><a class="toctree-l3" href="#recent-trades-list">Recent trades list</a></li>
+        
+            <li><a class="toctree-l3" href="#old-trades-lookup">Old trades lookup</a></li>
+        
+            <li><a class="toctree-l3" href="#compressedaggregate-trades-list">Compressed/Aggregate trades list</a></li>
+        
+            <li><a class="toctree-l3" href="#klinecandlestick-data">Kline/Candlestick data</a></li>
+        
+            <li><a class="toctree-l3" href="#mark-price">Mark price</a></li>
+        
+            <li><a class="toctree-l3" href="#24hr-ticker-price-change-statistics">24hr ticker price change statistics</a></li>
+        
+            <li><a class="toctree-l3" href="#symbol-price-ticker">Symbol price ticker</a></li>
         
         </ul>
     
@@ -72,8 +90,6 @@
     <li class="toctree-l2"><a href="#web-socket-streams">Web-Socket Streams</a></li>
     
         <ul>
-        
-            <li><a class="toctree-l3" href="#general-wss-information">General WSS information</a></li>
         
             <li><a class="toctree-l3" href="#aggregate-trade-streams">Aggregate Trade Streams</a></li>
         
@@ -135,9 +151,8 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="rest-api">Rest API</h1>
-<h2 id="general-endpoints">General endpoints</h2>
-<h3 id="test-connectivity">Test connectivity</h3>
+                <h1 id="rest-api-endpoints">Rest API endpoints</h1>
+<h2 id="test-connectivity">Test connectivity</h2>
 <pre><code>GET /fapi/v1/ping
 </code></pre>
 
@@ -150,7 +165,7 @@ NONE</p>
 <pre><code class="javascript">{}
 </code></pre>
 
-<h3 id="check-server-time">Check server time</h3>
+<h2 id="check-server-time">Check server time</h2>
 <pre><code>GET /fapi/v1/time
 </code></pre>
 
@@ -165,7 +180,7 @@ NONE</p>
 }
 </code></pre>
 
-<h3 id="exchange-information">Exchange information</h3>
+<h2 id="exchange-information">Exchange information</h2>
 <pre><code>GET /fapi/v1/exchangeInfo
 </code></pre>
 
@@ -237,8 +252,7 @@ NONE</p>
 
 </code></pre>
 
-<h2 id="market-data-endpoints">Market Data endpoints</h2>
-<h3 id="order-book">Order book</h3>
+<h2 id="order-book">Order book</h2>
 <pre><code>GET /fapi/v1/depth
 </code></pre>
 
@@ -310,7 +324,7 @@ Adjusted based on the limit:</p>
 }
 </code></pre>
 
-<h3 id="recent-trades-list">Recent trades list</h3>
+<h2 id="recent-trades-list">Recent trades list</h2>
 <pre><code>GET /fapi/v1/trades
 </code></pre>
 
@@ -355,11 +369,11 @@ Adjusted based on the limit:</p>
 ]
 </code></pre>
 
-<h3 id="old-trade-lookup-market_data">Old trade lookup (MARKET_DATA)</h3>
+<h2 id="old-trades-lookup">Old trades lookup</h2>
 <pre><code>GET /fapi/v1/historicalTrades
 </code></pre>
 
-<p>Get older trades.</p>
+<p>Get older market historical trades.</p>
 <p><strong>Weight:</strong>
 5</p>
 <p><strong>Parameters:</strong></p>
@@ -406,7 +420,7 @@ Adjusted based on the limit:</p>
 ]
 </code></pre>
 
-<h3 id="compressedaggregate-trades-list">Compressed/Aggregate trades list</h3>
+<h2 id="compressedaggregate-trades-list">Compressed/Aggregate trades list</h2>
 <pre><code>GET /fapi/v1/aggTrades
 </code></pre>
 
@@ -476,7 +490,7 @@ order, with the same price will have the quantity aggregated.</p>
 ]
 </code></pre>
 
-<h3 id="klinecandlestick-data">Kline/Candlestick data</h3>
+<h2 id="klinecandlestick-data">Kline/Candlestick data</h2>
 <pre><code>GET /fapi/v1/klines
 </code></pre>
 
@@ -549,7 +563,7 @@ Klines are uniquely identified by their open time.</p>
 ]
 </code></pre>
 
-<h3 id="mark-price">Mark price</h3>
+<h2 id="mark-price">Mark price</h2>
 <pre><code>GET /fapi/v1/premiumIndex
 </code></pre>
 
@@ -585,7 +599,7 @@ Klines are uniquely identified by their open time.</p>
 }
 </code></pre>
 
-<h3 id="24hr-ticker-price-change-statistics">24hr ticker price change statistics</h3>
+<h2 id="24hr-ticker-price-change-statistics">24hr ticker price change statistics</h2>
 <pre><code>GET /fapi/v1/ticker/24hr
 </code></pre>
 
@@ -636,7 +650,7 @@ Klines are uniquely identified by their open time.</p>
 }
 </code></pre>
 
-<h3 id="symbol-price-ticker">Symbol price ticker</h3>
+<h2 id="symbol-price-ticker">Symbol price ticker</h2>
 <pre><code>GET /fapi/v1/ticker/price
 </code></pre>
 
@@ -712,7 +726,6 @@ Klines are uniquely identified by their open time.</p>
 </code></pre>
 
 <h1 id="web-socket-streams">Web-Socket Streams</h1>
-<h2 id="general-wss-information">General WSS information</h2>
 <ul>
 <li>The base endpoint is: <strong>wss://testnet.binancefuture.com</strong></li>
 <li>Streams can be access either in a single raw stream or a combined stream</li>

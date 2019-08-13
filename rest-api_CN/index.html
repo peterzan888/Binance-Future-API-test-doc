@@ -363,22 +363,24 @@ There is no &amp; between "GTC" and "quantity=1".</p>
 </ul>
 <p><strong>限制种类 (rateLimitType)</strong></p>
 <ul>
-<li>REQUESTS_WEIGHT  单位时间请求权重之和上限
-    <code>json
-    {
-      "rateLimitType": "REQUEST_WEIGHT",
-      "interval": "MINUTE",
-      "intervalNum": 1,
-      "limit": 1200
-    }</code></li>
-<li>ORDERS    单位时间下单(撤单)次数上限
-    <code>json
-    {
-      "rateLimitType": "ORDERS",
-      "interval": "SECOND",
-      "intervalNum": 1,
-      "limit": 10
-    }</code></li>
+<li>
+<p>REQUESTS_WEIGHT  单位时间请求权重之和上限</p>
+<p><code>json
+{
+  "rateLimitType": "REQUEST_WEIGHT",
+  "interval": "MINUTE",
+  "intervalNum": 1,
+  "limit": 1200
+}</code>
+* ORDERS    单位时间下单(撤单)次数上限</p>
+<p><code>json
+{
+  "rateLimitType": "ORDERS",
+  "interval": "SECOND",
+  "intervalNum": 1,
+  "limit": 10
+}</code></p>
+</li>
 </ul>
 <p><strong>限制间隔</strong>
 * MINUTE</p>

@@ -90,7 +90,7 @@
     
         <ul>
         
-            <li><a class="toctree-l3" href="#user-data-stream-endpoints">User data stream endpoints</a></li>
+            <li><a class="toctree-l3" href="#user-data-stream-endpoints">User Data Stream endpoints</a></li>
         
             <li><a class="toctree-l3" href="#websocket-event">Websocket Event</a></li>
         
@@ -138,7 +138,7 @@
             <div class="section">
               
                 <h1 id="rest-api-endpoints">Rest API Endpoints</h1>
-<h2 id="new-order-trade">New order  (TRADE)</h2>
+<h2 id="new-order-trade">New order  (<em>TRADE</em>)</h2>
 <pre><code>POST /fapi/v1/order  (HMAC SHA256)
 </code></pre>
 
@@ -241,7 +241,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="query-order-user_data">Query order (USER_DATA)</h2>
+<h2 id="query-order-user_data">Query order (<em>USER_DATA</em>)</h2>
 <pre><code>GET /fapi/v1/order (HMAC SHA256)
 </code></pre>
 
@@ -314,7 +314,7 @@
 }
 </code></pre>
 
-<h2 id="cancel-order-trade">Cancel order (TRADE)</h2>
+<h2 id="cancel-order-trade">Cancel order (<em>TRADE</em>)</h2>
 <pre><code>DELETE /fapi/v1/order  (HMAC SHA256)
 </code></pre>
 
@@ -389,7 +389,7 @@
 }
 </code></pre>
 
-<h2 id="current-open-orders-user_data">Current open orders (USER_DATA)</h2>
+<h2 id="current-open-orders-user_data">Current open orders (<em>USER_DATA</em>)</h2>
 <pre><code>GET /fapi/v1/openOrders  (HMAC SHA256)
 </code></pre>
 
@@ -451,7 +451,7 @@
 ]
 </code></pre>
 
-<h2 id="all-orders-user_data">All orders (USER_DATA)</h2>
+<h2 id="all-orders-user_data">All orders (<em>USER_DATA</em>)</h2>
 <pre><code>GET /fapi/v1/allOrders (HMAC SHA256)
 </code></pre>
 
@@ -539,7 +539,7 @@
 ]
 </code></pre>
 
-<h2 id="account-information-user_data">Account information (USER_DATA)</h2>
+<h2 id="account-information-user_data">Account information (<em>USER_DATA</em>)</h2>
 <pre><code>GET /fapi/v1/account (HMAC SHA256)
 </code></pre>
 
@@ -594,7 +594,7 @@
 }
 </code></pre>
 
-<h2 id="position-information-user_data">Position information (USER_DATA)</h2>
+<h2 id="position-information-user_data">Position information (<em>USER_DATA</em>)</h2>
 <pre><code>GET /fapi/v1/positionRisk (HMAC SHA256)
 </code></pre>
 
@@ -638,7 +638,7 @@
 ]
 </code></pre>
 
-<h2 id="account-trade-list-user_data">Account trade list (USER_DATA)</h2>
+<h2 id="account-trade-list-user_data">Account trade list (<em>USER_DATA</em>)</h2>
 <pre><code>GET /fapi/v1/userTrades  (HMAC SHA256)
 </code></pre>
 
@@ -734,7 +734,7 @@ Otherwise most recent orders are returned.</li>
 <li>User Data Streams are accessed at <strong>/stream?stream=\&lt;listenKey></strong></li>
 <li>User data stream payloads are <strong>not guaranteed</strong> to be in order during heavy periods; <strong>make sure to order your updates using E</strong></li>
 </ul>
-<h2 id="user-data-stream-endpoints">User data stream endpoints</h2>
+<h2 id="user-data-stream-endpoints">User Data Stream endpoints</h2>
 <h3 id="start-user-data-stream-user_stream">Start user data stream (USER_STREAM)</h3>
 <pre><code>POST /fapi/v1/listenKey (HMAC SHA256)
 </code></pre>
