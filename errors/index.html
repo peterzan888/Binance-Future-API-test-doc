@@ -68,19 +68,138 @@
     <a class="current" href="./">ERROR INFO</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#error-codes-for-binance-2018-11-13">Error codes for Binance (2018-11-13)</a></li>
+    <li class="toctree-l2"><a href="#10xx-general-server-or-network-issues">10xx - General Server or Network issues</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#10xx-general-server-or-network-issues">10xx - General Server or Network issues</a></li>
+            <li><a class="toctree-l3" href="#-1000-unknown">-1000 UNKNOWN</a></li>
         
-            <li><a class="toctree-l3" href="#11xx-request-issues">11xx - Request issues</a></li>
+            <li><a class="toctree-l3" href="#-1001-disconnected">-1001 DISCONNECTED</a></li>
         
-            <li><a class="toctree-l3" href="#messages-for-1010-error_msg_received-2010-new_order_rejected-and-2011-cancel_rejected">Messages for -1010 ERROR_MSG_RECEIVED, -2010 NEW_ORDER_REJECTED, and -2011 CANCEL_REJECTED</a></li>
+            <li><a class="toctree-l3" href="#-1002-unauthorized">-1002 UNAUTHORIZED</a></li>
         
-            <li><a class="toctree-l3" href="#-9xxx-filter-failures">-9xxx Filter failures</a></li>
+            <li><a class="toctree-l3" href="#-1003-too_many_requests">-1003 TOO_MANY_REQUESTS</a></li>
+        
+            <li><a class="toctree-l3" href="#-1004-duplicate_ip">-1004 DUPLICATE_IP</a></li>
+        
+            <li><a class="toctree-l3" href="#-1005-no_such_ip">-1005 NO_SUCH_IP</a></li>
+        
+            <li><a class="toctree-l3" href="#-1006-unexpected_resp">-1006 UNEXPECTED_RESP</a></li>
+        
+            <li><a class="toctree-l3" href="#-1007-timeout">-1007 TIMEOUT</a></li>
+        
+            <li><a class="toctree-l3" href="#-1010-error_msg_received">-1010 ERROR_MSG_RECEIVED</a></li>
+        
+            <li><a class="toctree-l3" href="#-1011-non_white_list">-1011 NON_WHITE_LIST</a></li>
+        
+            <li><a class="toctree-l3" href="#-1013-illegal_message">-1013 ILLEGAL_MESSAGE</a></li>
+        
+            <li><a class="toctree-l3" href="#-1014-unknown_order_composition">-1014 UNKNOWN_ORDER_COMPOSITION</a></li>
+        
+            <li><a class="toctree-l3" href="#-1015-too_many_orders">-1015 TOO_MANY_ORDERS</a></li>
+        
+            <li><a class="toctree-l3" href="#-1016-service_shutting_down">-1016 SERVICE_SHUTTING_DOWN</a></li>
+        
+            <li><a class="toctree-l3" href="#-1020-unsupported_operation">-1020 UNSUPPORTED_OPERATION</a></li>
+        
+            <li><a class="toctree-l3" href="#-1021-invalid_timestamp">-1021 INVALID_TIMESTAMP</a></li>
+        
+            <li><a class="toctree-l3" href="#-1022-invalid_signature">-1022 INVALID_SIGNATURE</a></li>
         
         </ul>
+    
+
+    <li class="toctree-l2"><a href="#11xx-request-issues">11xx - Request issues</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#-1100-illegal_chars">-1100 ILLEGAL_CHARS</a></li>
+        
+            <li><a class="toctree-l3" href="#-1101-too_many_parameters">-1101 TOO_MANY_PARAMETERS</a></li>
+        
+            <li><a class="toctree-l3" href="#-1102-mandatory_param_empty_or_malformed">-1102 MANDATORY_PARAM_EMPTY_OR_MALFORMED</a></li>
+        
+            <li><a class="toctree-l3" href="#-1103-unknown_param">-1103 UNKNOWN_PARAM</a></li>
+        
+            <li><a class="toctree-l3" href="#-1104-unread_parameters">-1104 UNREAD_PARAMETERS</a></li>
+        
+            <li><a class="toctree-l3" href="#-1105-param_empty">-1105 PARAM_EMPTY</a></li>
+        
+            <li><a class="toctree-l3" href="#-1106-param_not_required">-1106 PARAM_NOT_REQUIRED</a></li>
+        
+            <li><a class="toctree-l3" href="#-1108-bad_asset">-1108 BAD_ASSET</a></li>
+        
+            <li><a class="toctree-l3" href="#-1109-bad_account">-1109 BAD_ACCOUNT</a></li>
+        
+            <li><a class="toctree-l3" href="#-1110-bad_instrument_type">-1110 BAD_INSTRUMENT_TYPE</a></li>
+        
+            <li><a class="toctree-l3" href="#-1111-bad_precision">-1111 BAD_PRECISION</a></li>
+        
+            <li><a class="toctree-l3" href="#-1112-no_depth">-1112 NO_DEPTH</a></li>
+        
+            <li><a class="toctree-l3" href="#-1113-withdraw_not_negative">-1113 WITHDRAW_NOT_NEGATIVE</a></li>
+        
+            <li><a class="toctree-l3" href="#-1114-tif_not_required">-1114 TIF_NOT_REQUIRED</a></li>
+        
+            <li><a class="toctree-l3" href="#-1115-invalid_tif">-1115 INVALID_TIF</a></li>
+        
+            <li><a class="toctree-l3" href="#-1116-invalid_order_type">-1116 INVALID_ORDER_TYPE</a></li>
+        
+            <li><a class="toctree-l3" href="#-1117-invalid_side">-1117 INVALID_SIDE</a></li>
+        
+            <li><a class="toctree-l3" href="#-1118-empty_new_cl_ord_id">-1118 EMPTY_NEW_CL_ORD_ID</a></li>
+        
+            <li><a class="toctree-l3" href="#-1119-empty_org_cl_ord_id">-1119 EMPTY_ORG_CL_ORD_ID</a></li>
+        
+            <li><a class="toctree-l3" href="#-1120-bad_interval">-1120 BAD_INTERVAL</a></li>
+        
+            <li><a class="toctree-l3" href="#-1121-bad_symbol">-1121 BAD_SYMBOL</a></li>
+        
+            <li><a class="toctree-l3" href="#-1125-invalid_listen_key">-1125 INVALID_LISTEN_KEY</a></li>
+        
+            <li><a class="toctree-l3" href="#-1127-more_than_xx_hours">-1127 MORE_THAN_XX_HOURS</a></li>
+        
+            <li><a class="toctree-l3" href="#-1128-optional_params_bad_combo">-1128 OPTIONAL_PARAMS_BAD_COMBO</a></li>
+        
+            <li><a class="toctree-l3" href="#-1130-invalid_parameter">-1130 INVALID_PARAMETER</a></li>
+        
+            <li><a class="toctree-l3" href="#-2008-bad_api_id">-2008 BAD_API_ID</a></li>
+        
+            <li><a class="toctree-l3" href="#-2010-new_order_rejected">-2010 NEW_ORDER_REJECTED</a></li>
+        
+            <li><a class="toctree-l3" href="#-2011-cancel_rejected">-2011 CANCEL_REJECTED</a></li>
+        
+            <li><a class="toctree-l3" href="#-2013-no_such_order">-2013 NO_SUCH_ORDER</a></li>
+        
+            <li><a class="toctree-l3" href="#-2014-bad_api_key_fmt">-2014 BAD_API_KEY_FMT</a></li>
+        
+            <li><a class="toctree-l3" href="#-2015-rejected_mbx_key">-2015 REJECTED_MBX_KEY</a></li>
+        
+            <li><a class="toctree-l3" href="#-2016-no_trading_window">-2016 NO_TRADING_WINDOW</a></li>
+        
+            <li><a class="toctree-l3" href="#-4000-invalid_order_status">-4000 INVALID_ORDER_STATUS</a></li>
+        
+            <li><a class="toctree-l3" href="#-4001-price_less_than_zero">-4001 PRICE_LESS_THAN_ZERO</a></li>
+        
+            <li><a class="toctree-l3" href="#-4002-price_greater_than_max_price">-4002 PRICE_GREATER_THAN_MAX_PRICE</a></li>
+        
+            <li><a class="toctree-l3" href="#-4003-qty_less_than_zero">-4003 QTY_LESS_THAN_ZERO</a></li>
+        
+            <li><a class="toctree-l3" href="#-4004-qty_less_than_min_qty">-4004 QTY_LESS_THAN_MIN_QTY</a></li>
+        
+            <li><a class="toctree-l3" href="#-4005-qty_greater_than_max_qty">-4005 QTY_GREATER_THAN_MAX_QTY</a></li>
+        
+            <li><a class="toctree-l3" href="#-4006-stop_price_less_than_zero">-4006 STOP_PRICE_LESS_THAN_ZERO</a></li>
+        
+            <li><a class="toctree-l3" href="#-4006-stop_price_greater_than_max_price">-4006 STOP_PRICE_GREATER_THAN_MAX_PRICE</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#messages-for-1010-error_msg_received-2010-new_order_rejected-and-2011-cancel_rejected">Messages for -1010 ERROR_MSG_RECEIVED, -2010 NEW_ORDER_REJECTED, and -2011 CANCEL_REJECTED</a></li>
+    
+
+    <li class="toctree-l2"><a href="#-9xxx-filter-failures">-9xxx Filter failures</a></li>
     
 
     </ul>
@@ -118,8 +237,7 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="error-codes-for-binance-2018-11-13">Error codes for Binance (2018-11-13)</h1>
-<p>Errors consist of two parts: an error code and a message. Codes are universal,
+                <p>Errors consist of two parts: an error code and a message. Codes are universal,
  but messages can vary. Here is the error JSON payload:</p>
 <pre><code class="javascript">{
   &quot;code&quot;:-1121,
