@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Web Socket 行情接口 - Future testnet API Docs</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Web Socket \u884c\u60c5\u63a5\u53e3";
+    var mkdocs_page_input_path = "web-socket-streams_CN.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Future testnet API Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../general_info/">GENERAL INFO</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../market_data/">MARKET DATA</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../trade_and_account/">ACCOUNT/TRADE</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../errors/">ERROR INFO</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Future testnet API Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Web Socket 行情接口</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="web-socket">Web Socket 行情接口</h1>
+<h1 id="_1">基本信息</h1>
+<ul>
+<li>本篇所列出的所有wss接口的baseurl为: <strong>wss://stream.binance.com:9443</strong></li>
+<li>组合streams的URL格式为 <strong>/stream?streams=\&lt;streamName1>/\&lt;streamName2>/\&lt;streamName3></strong></li>
+<li>订阅组合streams时，事件payload会以这样的格式封装 <strong>{"stream":"\&lt;streamName>","data":\&lt;rawPayload>}</strong></li>
+<li>stream名称中所有交易对均为<strong>大写</strong></li>
+<li>每个到<strong>stream.binance.com</strong>的链接有效期不超过24小时，请妥善处理断线重连。</li>
+<li>每3分钟，服务端会发送ping帧，客户端应当在10分钟内回复pong帧，否则服务端会主动断开链接。允许客户端发送不成对的pong帧(即客户端可以以高于10分钟每次的频率发送pong帧保持链接)。</li>
+</ul>
+<h1 id="stream">Stream 详细定义</h1>
+<h2 id="_2">最新合约价格</h2>
+<p>aggTrade中的价格'p'或ticker/miniTicker中的价格'c'均可以作为最新成交价。</p>
+<h2 id="_3">归集交易</h2>
+<p>归集交易与逐笔交易的区别在于，同一价格、同一方向、同一时间（按秒计算）的trade会被聚合为一条
+<strong>Stream 名称:</strong> \&lt;symbol>@aggTrade</p>
+<p><strong>Payload:</strong></p>
+<pre><code class="javascript">{
+  &quot;e&quot;: &quot;aggTrade&quot;,  // 事件类型
+  &quot;E&quot;: 123456789,   // 事件时间
+  &quot;s&quot;: &quot;BNBBTC&quot;,    // 交易对
+  &quot;p&quot;: &quot;0.001&quot;,     // 成交价格
+  &quot;q&quot;: &quot;100&quot;,       // 成交数量
+  &quot;f&quot;: 100,         // 被归集的首个交易ID
+  &quot;l&quot;: 105,         // 被归集的末次交易ID
+  &quot;T&quot;: 123456785,   // 成交时间
+  &quot;m&quot;: true         // 买方是否是做市方。如true，则此次成交是一个主动卖出单，否则是一个主动买入单。
+}
+</code></pre>
+
+<h2 id="k">K线</h2>
+<p>K线stream逐秒推送所请求的K线种类(最新一根K线)的更新</p>
+<p><strong>订阅Kline需要提供间隔参数，最短为分钟线，最长为月线。支持以下间隔:</strong></p>
+<p>m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
+<ul>
+<li>1m</li>
+<li>3m</li>
+<li>5m</li>
+<li>15m</li>
+<li>30m</li>
+<li>1h</li>
+<li>2h</li>
+<li>4h</li>
+<li>6h</li>
+<li>8h</li>
+<li>12h</li>
+<li>1d</li>
+<li>3d</li>
+<li>1w</li>
+<li>1M</li>
+</ul>
+<p><strong>Stream 名称:</strong> \&lt;symbol>@kline_\&lt;interval></p>
+<p><strong>Payload:</strong></p>
+<pre><code class="javascript">{
+  &quot;e&quot;: &quot;kline&quot;,     // 事件类型
+  &quot;E&quot;: 123456789,   // 事件时间
+  &quot;s&quot;: &quot;BNBBTC&quot;,    // 交易对
+  &quot;k&quot;: {
+    &quot;t&quot;: 123400000, // 这根K线的起始时间
+    &quot;T&quot;: 123460000, // 这根K线的结束时间
+    &quot;s&quot;: &quot;BNBBTC&quot;,  // 交易对
+    &quot;i&quot;: &quot;1m&quot;,      // K线间隔
+    &quot;f&quot;: 100,       // 这根K线期间第一笔成交ID
+    &quot;L&quot;: 200,       // 这根K线期间末一笔成交ID
+    &quot;o&quot;: &quot;0.0010&quot;,  // 这根K线期间第一笔成交价
+    &quot;c&quot;: &quot;0.0020&quot;,  // 这根K线期间末一笔成交价
+    &quot;h&quot;: &quot;0.0025&quot;,  // 这根K线期间最高成交价
+    &quot;l&quot;: &quot;0.0015&quot;,  // 这根K线期间最低成交价
+    &quot;v&quot;: &quot;1000&quot;,    // 这根K线期间成交量
+    &quot;n&quot;: 100,       // 这根K线期间成交数量
+    &quot;x&quot;: false,     // 这根K线是否完结（是否已经开始下一根K线）
+    &quot;q&quot;: &quot;1.0000&quot;,  // 这根K线期间成交额
+    &quot;V&quot;: &quot;500&quot;,     // 主动买入的成交量
+    &quot;Q&quot;: &quot;0.500&quot;,   // 主动买入的成交额
+    &quot;B&quot;: &quot;123456&quot;   // 忽略此参数
+  }
+}
+</code></pre>
+
+<h2 id="symbolticker">按Symbol的精简Ticker</h2>
+<p>按Symbol逐秒刷新的24小时精简ticker信息</p>
+<p><strong>Stream 名称:</strong> \&lt;symbol>@miniTicker</p>
+<p><strong>Payload:</strong></p>
+<pre><code class="javascript">  {
+    &quot;e&quot;: &quot;24hrMiniTicker&quot;,  // 事件类型
+    &quot;E&quot;: 123456789,         // 事件时间（毫秒）
+    &quot;s&quot;: &quot;BNBBTC&quot;,          // 交易对
+    &quot;c&quot;: &quot;0.0025&quot;,          // 最新成交价格
+    &quot;o&quot;: &quot;0.0010&quot;,          // 24小时前开始第一笔成交价格
+    &quot;h&quot;: &quot;0.0025&quot;,          // 24小时内最高成交价
+    &quot;l&quot;: &quot;0.0010&quot;,          // 24小时内最低成交加
+    &quot;v&quot;: &quot;10000&quot;,           // 成交量
+    &quot;q&quot;: &quot;18&quot;               // 成交额
+  }
+</code></pre>
+
+<h2 id="symbolticker_1">按Symbol的完整Ticker</h2>
+<p>按Symbol逐秒刷新的24小时完整ticker信息</p>
+<p><strong>Stream 名称:</strong> \&lt;symbol>@ticker</p>
+<p><strong>Payload:</strong></p>
+<pre><code class="javascript">{
+  &quot;e&quot;: &quot;24hrTicker&quot;,  // 事件类型
+  &quot;E&quot;: 123456789,     // 事件时间
+  &quot;s&quot;: &quot;BNBBTC&quot;,      // 交易对
+  &quot;p&quot;: &quot;0.0015&quot;,      // 24小时价格变化
+  &quot;P&quot;: &quot;250.00&quot;,      // 24小时价格变化（百分比）
+  &quot;w&quot;: &quot;0.0018&quot;,      // 平均价格
+  &quot;c&quot;: &quot;0.0025&quot;,      // 最新成交价格
+  &quot;Q&quot;: &quot;10&quot;,          // 最新成交价格上的成交量
+  &quot;o&quot;: &quot;0.0010&quot;,      // 24小时内第一比成交的价格
+  &quot;h&quot;: &quot;0.0025&quot;,      // 24小时内最高成交价
+  &quot;l&quot;: &quot;0.0010&quot;,      // 24小时内最低成交加
+  &quot;v&quot;: &quot;10000&quot;,       // 24小时内成交量
+  &quot;q&quot;: &quot;18&quot;,          // 24小时内成交额
+  &quot;O&quot;: 0,             // TODO 0 ??? 统计开始时间？？？
+  &quot;C&quot;: 86400000,      // TODO 3600*24*1000，24小时的毫秒数 ??? 统计关闭时间？？？
+  &quot;F&quot;: 0,             // 24小时内第一笔成交交易ID
+  &quot;L&quot;: 18150,         // 24小时内最后一笔成交交易ID
+  &quot;n&quot;: 18151          // 24小时内成交数
+}
+</code></pre>
+
+<h2 id="stream_1">增量深度信息stream</h2>
+<p>每秒推送orderbook的变化部分（如果有）</p>
+<p><strong>Stream 名称:</strong> \&lt;symbol>@depth</p>
+<p><strong>Payload:</strong></p>
+<pre><code class="javascript">{
+  &quot;e&quot;: &quot;depthUpdate&quot;, // 事件类型
+  &quot;E&quot;: 123456789,     // 事件时间
+  &quot;s&quot;: &quot;BNBBTC&quot;,      // 交易对
+  &quot;U&quot;: 157,           // 从上次推送至今新增的第一个 update Id
+  &quot;u&quot;: 160,           // 从上次推送至今新增的最后一个 update Id
+  &quot;pu&quot;: 149,          // 上次推送的最后一个update Id（即上条消息的‘u’）
+  &quot;b&quot;: [              // 变动的买单深度
+    [
+      &quot;0.0024&quot;,       // 价
+      &quot;10&quot;           // 量
+    ]
+  ],
+  &quot;a&quot;: [              // 变动的卖单深度
+    [
+      &quot;0.0026&quot;,       // 价
+      &quot;100&quot;          // 量
+    ]
+  ]
+}
+</code></pre>
+
+<h2 id="orderbook">如何正确在本地维护一个orderbook副本</h2>
+<ol>
+<li>订阅 <strong>wss://stream.binance.com:9443/ws/bnbbtc@depth</strong></li>
+<li>开始缓存收到的更新。同一个价位，后收到的更新覆盖前面的。</li>
+<li>访问Rest接口 <strong>https://www.binance.com/api/v1/depth?symbol=BNBBTC&amp;limit=1000</strong> 获得一个1000档的深度快照</li>
+<li>将目前缓存到的信息中<code>u</code>小于步骤3中获取到的快照中的<code>lastUpdateId</code>的部分丢弃(丢弃更早的信息，已经过期)。</li>
+<li>将深度快照中的内容更新到本地orderbook副本中，并从websocket接收到的第一个<code>U</code> &lt;= <code>lastUpdateId</code> <strong>且</strong> <code>u</code> &gt;= <code>lastUpdateId</code> 的event开始继续更新本地副本。</li>
+<li>每一个新event的<code>pu</code>应该等于上一个event的<code>u</code>，否则可能出现了丢包，请从step3重新进行初始化。</li>
+<li>每一个event中的挂单量代表这个价格目前的挂单量<strong>绝对值</strong>，而不是相对变化。</li>
+<li>如果某个价格对应的挂单量为0，表示该价位的挂单已经撤单或者被吃，应该移除这个价位。</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

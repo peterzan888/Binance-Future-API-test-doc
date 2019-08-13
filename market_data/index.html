@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>MARKET DATA - Future testnet API Docs</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "MARKET DATA";
+    var mkdocs_page_input_path = "market_data.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Future testnet API Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../general_info/">GENERAL INFO</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">MARKET DATA</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#rest-api">Rest API</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#general-endpoints">General endpoints</a></li>
+        
+            <li><a class="toctree-l3" href="#market-data-endpoints">Market Data endpoints</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#web-socket-streams">Web-Socket Streams</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#general-wss-information">General WSS information</a></li>
+        
+            <li><a class="toctree-l3" href="#aggregate-trade-streams">Aggregate Trade Streams</a></li>
+        
+            <li><a class="toctree-l3" href="#mark-price-stream">Mark Price Stream</a></li>
+        
+            <li><a class="toctree-l3" href="#individual-symbol-mini-ticker-stream">Individual Symbol Mini Ticker Stream</a></li>
+        
+            <li><a class="toctree-l3" href="#individual-symbol-ticker-streams">Individual Symbol Ticker Streams</a></li>
+        
+            <li><a class="toctree-l3" href="#partial-book-depth-streams">Partial Book Depth Streams</a></li>
+        
+            <li><a class="toctree-l3" href="#how-to-manage-a-local-order-book-correctly">How to manage a local order book correctly</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../trade_and_account/">ACCOUNT/TRADE</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../errors/">ERROR INFO</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Future testnet API Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>MARKET DATA</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="rest-api">Rest API</h1>
+<h2 id="general-endpoints">General endpoints</h2>
+<h3 id="test-connectivity">Test connectivity</h3>
+<pre><code>GET /fapi/v1/ping
+</code></pre>
+
+<p>Test connectivity to the Rest API.</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong>
+NONE</p>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{}
+</code></pre>
+
+<h3 id="check-server-time">Check server time</h3>
+<pre><code>GET /fapi/v1/time
+</code></pre>
+
+<p>Test connectivity to the Rest API and get the current server time.</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong>
+NONE</p>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+  &quot;serverTime&quot;: 1499827319559
+}
+</code></pre>
+
+<h3 id="exchange-information">Exchange information</h3>
+<pre><code>GET /fapi/v1/exchangeInfo
+</code></pre>
+
+<p>Current exchange trading rules and symbol information</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong>
+NONE</p>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+    &quot;exchangeFilters&quot;: [],
+    &quot;rateLimits&quot;: [
+        {
+            &quot;interval&quot;: &quot;MINUTE&quot;,
+            &quot;intervalNum&quot;: 1,
+            &quot;limit&quot;: 6000,
+            &quot;rateLimitType&quot;: &quot;REQUEST_WEIGHT&quot;
+        },
+        {
+            &quot;interval&quot;: &quot;MINUTE&quot;,
+            &quot;intervalNum&quot;: 1,
+            &quot;limit&quot;: 6000,
+            &quot;rateLimitType&quot;: &quot;ORDERS&quot;
+        }
+    ],
+    &quot;serverTime&quot;: 1565613908500,
+    &quot;symbols&quot;: [
+        {
+            &quot;filters&quot;: [
+                {
+                    &quot;filterType&quot;: &quot;PRICE_FILTER&quot;,
+                    &quot;maxPrice&quot;: &quot;10000000&quot;,
+                    &quot;minPrice&quot;: &quot;0&quot;,
+                    &quot;tickSize&quot;: &quot;0&quot;
+                },
+                {
+                    &quot;filterType&quot;: &quot;LOT_SIZE&quot;,
+                    &quot;maxQty&quot;: &quot;10000000&quot;,
+                    &quot;minQty&quot;: &quot;0&quot;,
+                    &quot;stepSize&quot;: &quot;0&quot;
+                },
+                {
+                    &quot;filterType&quot;: &quot;MARKET_LOT_SIZE&quot;,
+                    &quot;maxQty&quot;: &quot;0&quot;,
+                    &quot;minQty&quot;: &quot;0&quot;,
+                    &quot;stepSize&quot;: &quot;0&quot;
+                }
+            ],
+            &quot;maintMarginPercent&quot;: &quot;2.5000%&quot;,
+            &quot;pricePrecision&quot;: 2,
+            &quot;quantityPrecision&quot;: 3,
+            &quot;requiredMarginPercent&quot;: &quot;5.0000%&quot;,
+            &quot;status&quot;: &quot;TRADING&quot;,
+            &quot;supportOrderType&quot;: [
+                &quot;LIMIT&quot;, 
+                &quot;MARKET&quot;, 
+                &quot;STOP&quot;
+            ],
+            &quot;symbol&quot;: &quot;BTCUSDT&quot;,
+            &quot;timeInForce&quot;: [
+                &quot;GTC&quot;, 
+                &quot;OC&quot;, 
+                &quot;FOK&quot;
+            ]
+        }
+    ],
+    &quot;timezone&quot;: &quot;UTC&quot;
+}
+
+</code></pre>
+
+<h2 id="market-data-endpoints">Market Data endpoints</h2>
+<h3 id="order-book">Order book</h3>
+<pre><code>GET /fapi/v1/depth
+</code></pre>
+
+<p><strong>Weight:</strong>
+Adjusted based on the limit:</p>
+<table>
+<thead>
+<tr>
+<th>Limit</th>
+<th>Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5, 10, 20, 50, 100</td>
+<td>1</td>
+</tr>
+<tr>
+<td>500</td>
+<td>5</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>Default 100; max 1000. Valid limits:[5, 10, 20, 50, 100, 500, 1000]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Caution:</strong> setting limit=0 can return a lot of data.</p>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+  &quot;lastUpdateId&quot;: 1027024,
+  &quot;bids&quot;: [
+    [
+      &quot;4.00000000&quot;,     // PRICE
+      &quot;431.00000000&quot;    // QTY
+    ]
+  ],
+  &quot;asks&quot;: [
+    [
+      &quot;4.00000200&quot;,
+      &quot;12.00000000&quot;
+    ]
+  ]
+}
+</code></pre>
+
+<h3 id="recent-trades-list">Recent trades list</h3>
+<pre><code>GET /fapi/v1/trades
+</code></pre>
+
+<p>Get recent trades (up to last 500).</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>Default 500; max 1000.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">[
+  {
+    &quot;id&quot;: 28457,
+    &quot;price&quot;: &quot;4.00000100&quot;,
+    &quot;qty&quot;: &quot;12.00000000&quot;,
+    &quot;quoteQty&quot;: &quot;8000.00&quot;,
+    &quot;time&quot;: 1499865549590,
+    &quot;isBuyerMaker&quot;: true,
+  }
+]
+</code></pre>
+
+<h3 id="old-trade-lookup-market_data">Old trade lookup (MARKET_DATA)</h3>
+<pre><code>GET /fapi/v1/historicalTrades
+</code></pre>
+
+<p>Get older trades.</p>
+<p><strong>Weight:</strong>
+5</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>Default 500; max 1000.</td>
+</tr>
+<tr>
+<td>fromId</td>
+<td>LONG</td>
+<td>NO</td>
+<td>TradeId to fetch from. Default gets most recent trades.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">[
+  {
+    &quot;id&quot;: 28457,
+    &quot;price&quot;: &quot;4.00000100&quot;,
+    &quot;qty&quot;: &quot;12.00000000&quot;,
+    &quot;quoteQty&quot;: &quot;8000.00&quot;,
+    &quot;time&quot;: 1499865549590,
+    &quot;isBuyerMaker&quot;: true,
+  }
+]
+</code></pre>
+
+<h3 id="compressedaggregate-trades-list">Compressed/Aggregate trades list</h3>
+<pre><code>GET /fapi/v1/aggTrades
+</code></pre>
+
+<p>Get compressed, aggregate trades. Trades that fill at the time, from the same
+order, with the same price will have the quantity aggregated.</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>fromId</td>
+<td>LONG</td>
+<td>NO</td>
+<td>ID to get aggregate trades from INCLUSIVE.</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td>Timestamp in ms to get aggregate trades from INCLUSIVE.</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td>Timestamp in ms to get aggregate trades until INCLUSIVE.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>Default 500; max 1000.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>If both startTime and endTime are sent, time between startTime and endTime must be less than 1 hour.</li>
+<li>If fromId, startTime, and endTime are not sent, the most recent aggregate trades will be returned.</li>
+</ul>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">[
+  {
+    &quot;a&quot;: 26129,         // Aggregate tradeId
+    &quot;p&quot;: &quot;0.01633102&quot;,  // Price
+    &quot;q&quot;: &quot;4.70443515&quot;,  // Quantity
+    &quot;f&quot;: 27781,         // First tradeId
+    &quot;l&quot;: 27781,         // Last tradeId
+    &quot;T&quot;: 1498793709153, // Timestamp
+    &quot;m&quot;: true,          // Was the buyer the maker?
+    &quot;M&quot;: true           // Was the trade the best price match?
+  }
+]
+</code></pre>
+
+<h3 id="klinecandlestick-data">Kline/Candlestick data</h3>
+<pre><code>GET /fapi/v1/klines
+</code></pre>
+
+<p>Kline/candlestick bars for a symbol.
+Klines are uniquely identified by their open time.</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>interval</td>
+<td>ENUM</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>Default 500; max 1000.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>If startTime and endTime are not sent, the most recent klines are returned.</li>
+</ul>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">[
+  [
+    1499040000000,      // Open time
+    &quot;0.01634790&quot;,       // Open
+    &quot;0.80000000&quot;,       // High
+    &quot;0.01575800&quot;,       // Low
+    &quot;0.01577100&quot;,       // Close
+    &quot;148976.11427815&quot;,  // Volume
+    1499644799999,      // Close time
+    &quot;2434.19055334&quot;,    // Quote asset volume
+    308,                // Number of trades
+    &quot;1756.87402397&quot;,    // Taker buy base asset volume
+    &quot;28.46694368&quot;,      // Taker buy quote asset volume
+    &quot;17928899.62484339&quot; // Ignore.
+  ]
+]
+</code></pre>
+
+<h3 id="mark-price">Mark price</h3>
+<pre><code>GET /fapi/v1/premiumIndex
+</code></pre>
+
+<p>mark price and funding rate</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+    &quot;symbol&quot;: &quot;BTCUSDT&quot;,
+    &quot;markPrice&quot;: &quot;11012.80409769&quot;,
+    &quot;lastFundingRate&quot;: &quot;-0.03750000&quot;,
+    &quot;nextFundingTime&quot;: 1562569200000,
+    &quot;time&quot;: 1562566020000
+}
+</code></pre>
+
+<h3 id="24hr-ticker-price-change-statistics">24hr ticker price change statistics</h3>
+<pre><code>GET /fapi/v1/ticker/24hr
+</code></pre>
+
+<p>24 hour rolling window price change statistics. <strong>Careful</strong> when accessing this with no symbol.</p>
+<p><strong>Weight:</strong>
+1 for a single symbol; <strong>40</strong> when the symbol parameter is omitted</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>NO</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>If the symbol is not sent, tickers for all symbols will be returned in an array.</li>
+</ul>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+  &quot;symbol&quot;: &quot;BTCUSDT&quot;,
+  &quot;priceChange&quot;: &quot;-94.99999800&quot;,
+  &quot;priceChangePercent&quot;: &quot;-95.960&quot;,
+  &quot;weightedAvgPrice&quot;: &quot;0.29628482&quot;,
+  &quot;prevClosePrice&quot;: &quot;0.10002000&quot;,
+  &quot;lastPrice&quot;: &quot;4.00000200&quot;,
+  &quot;lastQty&quot;: &quot;200.00000000&quot;,
+  &quot;openPrice&quot;: &quot;99.00000000&quot;,
+  &quot;highPrice&quot;: &quot;100.00000000&quot;,
+  &quot;lowPrice&quot;: &quot;0.10000000&quot;,
+  &quot;volume&quot;: &quot;8913.30000000&quot;,
+  &quot;quoteVolume&quot;: &quot;15.30000000&quot;,
+  &quot;openTime&quot;: 1499783499040,
+  &quot;closeTime&quot;: 1499869899040,
+  &quot;firstId&quot;: 28385,   // First tradeId
+  &quot;lastId&quot;: 28460,    // Last tradeId
+  &quot;count&quot;: 76         // Trade count
+}
+</code></pre>
+
+<h3 id="symbol-price-ticker">Symbol price ticker</h3>
+<pre><code>GET /fapi/v1/ticker/price
+</code></pre>
+
+<p>Latest price for a symbol or symbols.</p>
+<p><strong>Weight:</strong>
+1 for a single symbol; <strong>2</strong> when the symbol parameter is omitted</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>If the symbol is not sent, prices for all symbols will be returned in an array.</li>
+</ul>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+  &quot;symbol&quot;: &quot;BTCUSDT&quot;,
+  &quot;price&quot;: &quot;6000.01&quot;
+}
+</code></pre>
+
+<h3 id="symbol-order-book-ticker">Symbol order book ticker</h3>
+<pre><code>GET /fapi/v1/ticker/bookTicker
+</code></pre>
+
+<p>Best price/qty on the order book for a symbol or symbols.</p>
+<p><strong>Weight:</strong>
+1 for a single symbol; <strong>2</strong> when the symbol parameter is omitted</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>If the symbol is not sent, bookTickers for all symbols will be returned in an array.</li>
+</ul>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+  &quot;symbol&quot;: &quot;BTCUSDT&quot;,
+  &quot;bidPrice&quot;: &quot;4.00000000&quot;,
+  &quot;bidQty&quot;: &quot;431.00000000&quot;,
+  &quot;askPrice&quot;: &quot;4.00000200&quot;,
+  &quot;askQty&quot;: &quot;9.00000000&quot;
+}
+</code></pre>
+
+<h1 id="web-socket-streams">Web-Socket Streams</h1>
+<h2 id="general-wss-information">General WSS information</h2>
+<ul>
+<li>The base endpoint is: <strong>wss://testnet.binancefuture.com</strong></li>
+<li>Streams can be access either in a single raw stream or a combined stream</li>
+<li>Combined streams are accessed at <strong>/stream?streams=\&lt;streamName1>/\&lt;streamName2>/\&lt;streamName3></strong></li>
+<li>Combined stream events are wrapped as follows: <strong>{"stream":"\&lt;streamName>","data":\&lt;rawPayload>}</strong></li>
+<li>All symbols for streams are <strong>lowercase</strong></li>
+<li>The websocket server will send a <code>ping frame</code> every 3 minutes. If the websocket server does not receive a <code>pong frame</code> back from the connection within a 10 minute period, the connection will be disconnected. Unsolicited <code>pong frames</code> are allowed.</li>
+</ul>
+<h2 id="aggregate-trade-streams">Aggregate Trade Streams</h2>
+<p>The Aggregate Trade Streams push trade information that is aggregated for a single taker order.</p>
+<p><strong>Stream Name:</strong> \&lt;symbol>@aggTrade</p>
+<p><strong>Payload:</strong></p>
+<pre><code class="javascript">{
+  &quot;e&quot;: &quot;aggTrade&quot;,  // Event type
+  &quot;E&quot;: 123456789,   // Event time
+  &quot;s&quot;: &quot;BTCUSDT&quot;,    // Symbol
+  &quot;a&quot;: 12345,       // Aggregate trade ID
+  &quot;p&quot;: &quot;0.001&quot;,     // Price
+  &quot;q&quot;: &quot;100&quot;,       // Quantity
+  &quot;f&quot;: 100,         // First trade ID
+  &quot;l&quot;: 105,         // Last trade ID
+  &quot;T&quot;: 123456785,   // Trade time
+  &quot;m&quot;: true,        // Is the buyer the market maker?
+}
+</code></pre>
+
+<h2 id="mark-price-stream">Mark Price Stream</h2>
+<p>Mark price for a single symbol pushed every minute. </p>
+<p><strong>Stream Name:</strong> \&lt;symbol>@markPrice</p>
+<p><strong>Payload:</strong></p>
+<pre><code class="javascript">  {
+    &quot;e&quot;: &quot;markPriceUpdate&quot;,  // Event type
+    &quot;E&quot;: 1562305380000,      // Event time
+    &quot;s&quot;: &quot;BTCUSDT&quot;,          // Symbol
+    &quot;p&quot;: &quot;11185.87786614&quot;,   // Mark price
+    &quot;r&quot;: &quot;0.00030000&quot;,       // Funding rate
+    &quot;T&quot;: 1562306400000       // Next funding time
+  }
+</code></pre>
+
+<h3 id="klinecandlestick-streams">Kline/Candlestick Streams</h3>
+<p>The Kline/Candlestick Stream push updates to the current klines/candlestick every second.</p>
+<p><strong>Kline/Candlestick chart intervals:</strong></p>
+<p>m -&gt; minutes; h -&gt; hours; d -&gt; days; w -&gt; weeks; M -&gt; months</p>
+<ul>
+<li>1m</li>
+<li>3m</li>
+<li>5m</li>
+<li>15m</li>
+<li>30m</li>
+<li>1h</li>
+<li>2h</li>
+<li>4h</li>
+<li>6h</li>
+<li>8h</li>
+<li>12h</li>
+<li>1d</li>
+<li>3d</li>
+<li>1w</li>
+<li>1M</li>
+</ul>
+<p><strong>Stream Name:</strong> \&lt;symbol>@kline_\&lt;interval></p>
+<p><strong>Payload:</strong></p>
+<pre><code class="javascript">{
+  &quot;e&quot;: &quot;kline&quot;,     // Event type
+  &quot;E&quot;: 123456789,   // Event time
+  &quot;s&quot;: &quot;BTCUSDT&quot;,    // Symbol
+  &quot;k&quot;: {
+    &quot;t&quot;: 123400000, // Kline start time
+    &quot;T&quot;: 123460000, // Kline close time
+    &quot;s&quot;: &quot;BTCUSDT&quot;,  // Symbol
+    &quot;i&quot;: &quot;1m&quot;,      // Interval
+    &quot;f&quot;: 100,       // First trade ID
+    &quot;L&quot;: 200,       // Last trade ID
+    &quot;o&quot;: &quot;0.0010&quot;,  // Open price
+    &quot;c&quot;: &quot;0.0020&quot;,  // Close price
+    &quot;h&quot;: &quot;0.0025&quot;,  // High price
+    &quot;l&quot;: &quot;0.0015&quot;,  // Low price
+    &quot;v&quot;: &quot;1000&quot;,    // Base asset volume
+    &quot;n&quot;: 100,       // Number of trades
+    &quot;x&quot;: false,     // Is this kline closed?
+    &quot;q&quot;: &quot;1.0000&quot;,  // Quote asset volume
+    &quot;V&quot;: &quot;500&quot;,     // Taker buy base asset volume
+    &quot;Q&quot;: &quot;0.500&quot;,   // Taker buy quote asset volume
+    &quot;B&quot;: &quot;123456&quot;   // Ignore
+  }
+}
+</code></pre>
+
+<h2 id="individual-symbol-mini-ticker-stream">Individual Symbol Mini Ticker Stream</h2>
+<p>24hr rolling window mini-ticker statistics for a single symbol pushed every second. These are NOT the statistics of the UTC day, but a 24hr rolling window from requestTime to 24hrs before.</p>
+<p><strong>Stream Name:</strong> \&lt;symbol>@miniTicker</p>
+<p><strong>Payload:</strong></p>
+<pre><code class="javascript">  {
+    &quot;e&quot;: &quot;24hrMiniTicker&quot;,  // Event type
+    &quot;E&quot;: 123456789,         // Event time
+    &quot;s&quot;: &quot;BTCUSDT&quot;,          // Symbol
+    &quot;c&quot;: &quot;0.0025&quot;,          // Close price
+    &quot;o&quot;: &quot;0.0010&quot;,          // Open price
+    &quot;h&quot;: &quot;0.0025&quot;,          // High price
+    &quot;l&quot;: &quot;0.0010&quot;,          // Low price
+    &quot;v&quot;: &quot;10000&quot;,           // Total traded base asset volume
+    &quot;q&quot;: &quot;18&quot;               // Total traded quote asset volume
+  }
+</code></pre>
+
+<h2 id="individual-symbol-ticker-streams">Individual Symbol Ticker Streams</h2>
+<p>24hr rollwing window ticker statistics for a single symbol pushed every second. These are NOT the statistics of the UTC day, but a 24hr rolling window from requestTime to 24hrs before.</p>
+<p><strong>Stream Name:</strong> \&lt;symbol>@ticker</p>
+<p><strong>Payload:</strong></p>
+<pre><code class="javascript">{
+  &quot;e&quot;: &quot;24hrTicker&quot;,  // Event type
+  &quot;E&quot;: 123456789,     // Event time
+  &quot;s&quot;: &quot;BTCUSDT&quot;,      // Symbol
+  &quot;p&quot;: &quot;0.0015&quot;,      // Price change
+  &quot;P&quot;: &quot;250.00&quot;,      // Price change percent
+  &quot;w&quot;: &quot;0.0018&quot;,      // Weighted average price
+  &quot;x&quot;: &quot;0.0009&quot;,      // First trade(F)-1 price (first trade before the 24hr rolling window)
+  &quot;c&quot;: &quot;0.0025&quot;,      // Last price
+  &quot;Q&quot;: &quot;10&quot;,          // Last quantity
+  &quot;o&quot;: &quot;0.0010&quot;,      // Open price
+  &quot;h&quot;: &quot;0.0025&quot;,      // High price
+  &quot;l&quot;: &quot;0.0010&quot;,      // Low price
+  &quot;v&quot;: &quot;10000&quot;,       // Total traded base asset volume
+  &quot;q&quot;: &quot;18&quot;,          // Total traded quote asset volume
+  &quot;O&quot;: 0,             // Statistics open time
+  &quot;C&quot;: 86400000,      // Statistics close time
+  &quot;F&quot;: 0,             // First trade ID
+  &quot;L&quot;: 18150,         // Last trade Id
+  &quot;n&quot;: 18151          // Total number of trades
+}
+</code></pre>
+
+<h2 id="partial-book-depth-streams">Partial Book Depth Streams</h2>
+<p>Top <strong>\&lt;levels></strong> bids and asks, pushed every second. Valid <strong>\&lt;levels></strong> are 5, 10, or 20.</p>
+<p><strong>Stream Name:</strong> \&lt;symbol>@depth\&lt;levels></p>
+<p><strong>Payload:</strong></p>
+<pre><code class="javascript">{
+  &quot;lastUpdateId&quot;: 160,  // Last update ID
+  &quot;bids&quot;: [             // Bids to be updated
+    [
+      &quot;0.0024&quot;,         // Price level to be updated
+      &quot;10&quot;              // Quantity
+    ]
+  ],
+  &quot;asks&quot;: [             // Asks to be updated
+    [
+      &quot;0.0026&quot;,         // Price level to be updated
+      &quot;100&quot;            // Quantity
+    ]
+  ]
+}
+</code></pre>
+
+<h2 id="how-to-manage-a-local-order-book-correctly">How to manage a local order book correctly</h2>
+<ol>
+<li>Open a stream to <strong>wss://testnet.binancefuture.com/stream?streams=btcusdt@depth</strong></li>
+<li>Buffer the events you receive from the stream</li>
+<li>Get a depth snapshot from <strong>https://testnet.binancefuture.com/fapi/v1/depth?symbol=BTCUSDT&amp;limit=1000</strong></li>
+<li>Drop any event where <code>u</code> is &lt;= <code>lastUpdateId</code> in the snapshot</li>
+<li>The first processed should have <code>U</code> &lt;= <code>lastUpdateId</code>+1 <strong>AND</strong> <code>u</code> &gt;= <code>lastUpdateId</code>+1</li>
+<li>While listening to the stream, each new event's <code>U</code> should be equal to the previous event's <code>u</code>+1</li>
+<li>The data in each event is the <strong>absolute</strong> quantity for a price level</li>
+<li>If the quantity is 0, <strong>remove</strong> the price level</li>
+<li>Receiving an event that removes a price level that is not in your local order book can happen and is normal.</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../trade_and_account/" class="btn btn-neutral float-right" title="ACCOUNT/TRADE">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../general_info/" class="btn btn-neutral" title="GENERAL INFO"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../general_info/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../trade_and_account/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

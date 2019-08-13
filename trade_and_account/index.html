@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>ACCOUNT/TRADE - Future testnet API Docs</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "ACCOUNT/TRADE";
+    var mkdocs_page_input_path = "trade_and_account.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Future testnet API Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../general_info/">GENERAL INFO</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../market_data/">MARKET DATA</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">ACCOUNT/TRADE</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#rest-api-endpoints">Rest API Endpoints</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#new-order-trade">New order  (TRADE)</a></li>
+        
+            <li><a class="toctree-l3" href="#query-order-user_data">Query order (USER_DATA)</a></li>
+        
+            <li><a class="toctree-l3" href="#cancel-order-trade">Cancel order (TRADE)</a></li>
+        
+            <li><a class="toctree-l3" href="#current-open-orders-user_data">Current open orders (USER_DATA)</a></li>
+        
+            <li><a class="toctree-l3" href="#all-orders-user_data">All orders (USER_DATA)</a></li>
+        
+            <li><a class="toctree-l3" href="#account-information-user_data">Account information (USER_DATA)</a></li>
+        
+            <li><a class="toctree-l3" href="#position-information-user_data">Position information (USER_DATA)</a></li>
+        
+            <li><a class="toctree-l3" href="#account-trade-list-user_data">Account trade list (USER_DATA)</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#web-scoket-user-data-streams">Web-Scoket User Data Streams</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#user-data-stream-endpoints">User data stream endpoints</a></li>
+        
+            <li><a class="toctree-l3" href="#websocket-event">Websocket Event</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../errors/">ERROR INFO</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Future testnet API Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>ACCOUNT/TRADE</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="rest-api-endpoints">Rest API Endpoints</h1>
+<h2 id="new-order-trade">New order  (TRADE)</h2>
+<pre><code>POST /fapi/v1/order  (HMAC SHA256)
+</code></pre>
+
+<p>Send in a new order.</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>side</td>
+<td>ENUM</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>ENUM</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>timeInForce</td>
+<td>ENUM</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>DECIMAL</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>price</td>
+<td>DECIMAL</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>newClientOrderId</td>
+<td>STRING</td>
+<td>NO</td>
+<td>A unique id for the order. Automatically generated if not sent.</td>
+</tr>
+<tr>
+<td>stopPrice</td>
+<td>DECIMAL</td>
+<td>NO</td>
+<td>Used with <code>STOP</code> orders.</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Additional mandatory parameters based on <code>type</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Additional mandatory parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LIMIT</code></td>
+<td><code>timeInForce</code>, <code>quantity</code>, <code>price</code></td>
+</tr>
+<tr>
+<td><code>MARKET</code></td>
+<td><code>quantity</code></td>
+</tr>
+<tr>
+<td><code>STOP</code></td>
+<td><code>quantity</code>,  <code>price</code>, <code>stopPrice</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="query-order-user_data">Query order (USER_DATA)</h2>
+<pre><code>GET /fapi/v1/order (HMAC SHA256)
+</code></pre>
+
+<p>Check an order's status.</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>orderId</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>origClientOrderId</td>
+<td>STRING</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Notes:
+* Either <code>orderId</code> or <code>origClientOrderId</code> must be sent.
+* For some historical orders <code>cummulativeQuoteQty</code> will be &lt; 0, meaning the data is not available at this time.</p>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+  &quot;symbol&quot;: &quot;BTCUSDT&quot;,
+  &quot;orderId&quot;: 1,
+  &quot;clientOrderId&quot;: &quot;myOrder1&quot;,
+  &quot;price&quot;: &quot;0.1&quot;,
+  &quot;origQty&quot;: &quot;1.0&quot;,
+  &quot;executedQty&quot;: &quot;0.0&quot;,
+  &quot;cumQuote&quot;: &quot;0.0&quot;,
+  &quot;status&quot;: &quot;NEW&quot;,
+  &quot;timeInForce&quot;: &quot;GTC&quot;,
+  &quot;type&quot;: &quot;LIMIT&quot;,
+  &quot;side&quot;: &quot;BUY&quot;,
+  &quot;stopPrice&quot;: &quot;0.0&quot;,
+  &quot;icebergQty&quot;: &quot;0.0&quot;,
+  &quot;time&quot;: 1499827319559,
+  &quot;updateTime&quot;: 1499827319559
+}
+</code></pre>
+
+<h2 id="cancel-order-trade">Cancel order (TRADE)</h2>
+<pre><code>DELETE /fapi/v1/order  (HMAC SHA256)
+</code></pre>
+
+<p>Cancel an active order.</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>orderId</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>origClientOrderId</td>
+<td>STRING</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>newClientOrderId</td>
+<td>STRING</td>
+<td>NO</td>
+<td>Used to uniquely identify this cancel. Automatically generated by default.</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Either <code>orderId</code> or <code>origClientOrderId</code> must be sent.</p>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+  &quot;symbol&quot;: &quot;BTCUSDT&quot;,
+  &quot;orderId&quot;: 28,
+  &quot;origClientOrderId&quot;: &quot;myOrder1&quot;,
+  &quot;clientOrderId&quot;: &quot;cancelMyOrder1&quot;,
+  &quot;transactTime&quot;: 1507725176595,
+  &quot;price&quot;: &quot;1.00000000&quot;,
+  &quot;origQty&quot;: &quot;10.00000000&quot;,
+  &quot;executedQty&quot;: &quot;8.00000000&quot;,
+  &quot;cumQuote&quot;: &quot;8.00000000&quot;,
+  &quot;status&quot;: &quot;CANCELED&quot;,
+  &quot;timeInForce&quot;: &quot;GTC&quot;,
+  &quot;type&quot;: &quot;LIMIT&quot;,
+  &quot;side&quot;: &quot;SELL&quot;
+}
+</code></pre>
+
+<h2 id="current-open-orders-user_data">Current open orders (USER_DATA)</h2>
+<pre><code>GET /fapi/v1/openOrders  (HMAC SHA256)
+</code></pre>
+
+<p>Get all open orders on a symbol. <strong>Careful</strong> when accessing this with no symbol.</p>
+<p><strong>Weight:</strong>
+1 for a single symbol; <strong>40</strong> when the symbol parameter is omitted</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>If the symbol is not sent, orders for all symbols will be returned in an array.</li>
+</ul>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">[
+  {
+    &quot;symbol&quot;: &quot;BTCUSDT&quot;,
+    &quot;orderId&quot;: 1,
+    &quot;clientOrderId&quot;: &quot;myOrder1&quot;,
+    &quot;accountId&quot;: 1,
+    &quot;price&quot;: &quot;0.1&quot;,
+    &quot;origQty&quot;: &quot;1.0&quot;,
+    &quot;cumQty&quot;: &quot;1.0&quot;,
+    &quot;cumQuote&quot;: &quot;1.0&quot;,
+    &quot;status&quot;: &quot;NEW&quot;,
+    &quot;timeInForce&quot;: &quot;GTC&quot;,
+    &quot;type&quot;: &quot;LIMIT&quot;,
+    &quot;side&quot;: &quot;BUY&quot;,
+    &quot;stopPrice&quot;: &quot;0.0&quot;,
+    &quot;updateTime&quot;: 1499827319559
+  }
+]
+</code></pre>
+
+<h2 id="all-orders-user_data">All orders (USER_DATA)</h2>
+<pre><code>GET /fapi/v1/allOrders (HMAC SHA256)
+</code></pre>
+
+<p>Get all account orders; active, canceled, or filled.</p>
+<p><strong>Weight:</strong>
+5 with symbol</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>fromId</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>Default 500; max 1000.</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>At least one of <code>fromId</code>, <code>stratTime</code>, and <code>endTime</code> must be sent.</li>
+<li>If <code>fromId</code> is set, it will get orders &gt;= that <code>orderId</code>. Otherwise most recent orders are returned.</li>
+<li>For some historical orders <code>cummulativeQuoteQty</code> will be &lt; 0, meaning the data is not available at this time.</li>
+</ul>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">[
+  {
+    &quot;symbol&quot;: &quot;BTCUSDT&quot;,
+    &quot;orderId&quot;: 1,
+    &quot;clientOrderId&quot;: &quot;myOrder1&quot;,
+    &quot;price&quot;: &quot;0.1&quot;,
+    &quot;origQty&quot;: &quot;1.0&quot;,
+    &quot;cumQty&quot;: &quot;1.0&quot;,
+    &quot;cumQuote&quot;: &quot;10.0&quot;,
+    &quot;status&quot;: &quot;NEW&quot;,
+    &quot;timeInForce&quot;: &quot;GTC&quot;,
+    &quot;type&quot;: &quot;LIMIT&quot;,
+    &quot;side&quot;: &quot;BUY&quot;,
+    &quot;stopPrice&quot;: &quot;0.0&quot;,
+    &quot;updateTime&quot;: 1499827319559
+  }
+]
+</code></pre>
+
+<h2 id="account-information-user_data">Account information (USER_DATA)</h2>
+<pre><code>GET /fapi/v1/account (HMAC SHA256)
+</code></pre>
+
+<p>Get current account information.</p>
+<p><strong>Weight:</strong>
+5</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="javascript">{
+    &quot;canTrade&quot;: true,
+    &quot;canDeposit&quot;: true,
+    &quot;canWithdraw&quot;: true,
+    &quot;updateTime&quot;: 0,
+    &quot;totalInitialMargin&quot;: &quot;1753.3112796525&quot;,
+    &quot;totalMaintMargin&quot;: &quot;876.65563982625&quot;,
+    &quot;totalWalletBalance&quot;: &quot;74757.0&quot;,
+    &quot;totalUnrealizedProfit&quot;: &quot;18933.77440695&quot;,
+    &quot;totalMarginBalance&quot;: &quot;93690.77440695&quot;,
+    &quot;assets&quot;: [
+        {
+            &quot;asset&quot;: &quot;USDT&quot;,
+            &quot;walletBalance&quot;: &quot;74757.0&quot;,
+            &quot;unrealizedProfit&quot;: &quot;18933.77440695&quot;,
+            &quot;marginBalance&quot;: &quot;93690.77440695&quot;,
+            &quot;maintMargin&quot;: &quot;876.65563982625&quot;,
+            &quot;initialMargin&quot;: &quot;1753.3112796525&quot;
+        }
+    ]
+}
+</code></pre>
+
+<h2 id="position-information-user_data">Position information (USER_DATA)</h2>
+<pre><code>GET /fapi/v1/positionRisk (HMAC SHA256)
+</code></pre>
+
+<p>Get current account information.</p>
+<p><strong>Weight:</strong>
+5</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">[
+    {
+        &quot;symbol&quot;: &quot;BTCUSDT&quot;,
+        &quot;positionAmt&quot;: &quot;-204.0&quot;,
+        &quot;entryPrice&quot;: &quot;18224.2&quot;,
+        &quot;markPrice&quot;: &quot;11593.93170873&quot;,
+        &quot;unRealizedProfit&quot;: &quot;1352574.73141908&quot;
+    }
+]
+</code></pre>
+
+<h2 id="account-trade-list-user_data">Account trade list (USER_DATA)</h2>
+<pre><code>GET /fapi/v1/userTrades  (HMAC SHA256)
+</code></pre>
+
+<p>Get trades for a specific account and symbol.</p>
+<p><strong>Weight:</strong>
+5 with symbol</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>fromId</td>
+<td>LONG</td>
+<td>NO</td>
+<td>TradeId to fetch from. Default gets most recent trades.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>Default 500; max 1000.</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>At least one of <code>fromId</code>, <code>stratTime</code>, and <code>endTime</code> must be sent.</li>
+<li>If <code>fromId</code> is set, it will get orders &gt;= that <code>fromId</code>.
+Otherwise most recent orders are returned.</li>
+</ul>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">[
+  {
+    &quot;symbol&quot;: &quot;BTCUSDT&quot;,
+    &quot;id&quot;: 28457,
+    &quot;orderId&quot;: 100234,
+    &quot;price&quot;: &quot;4.00000100&quot;,
+    &quot;qty&quot;: &quot;12.00000000&quot;,
+    &quot;quoteQty&quot;: &quot;48.000012&quot;,
+    &quot;commission&quot;: &quot;10.10000000&quot;,
+    &quot;commissionAsset&quot;: &quot;BNB&quot;,
+    &quot;time&quot;: 1499865549590,
+    &quot;isBuyer&quot;: true,
+    &quot;isMaker&quot;: false,
+  }
+]
+</code></pre>
+
+<h1 id="web-scoket-user-data-streams">Web-Scoket User Data Streams</h1>
+<ul>
+<li>The base API endpoint is: <strong>https://testnet.binancefuture.com</strong></li>
+<li>A User Data Stream <code>listenKey</code> is valid for 30 minutes after creation.</li>
+<li>Doing a <code>PUT</code> on a <code>listenKey</code> will extend its validity for 30 minutes.</li>
+<li>Doing a <code>DELETE</code> on a <code>listenKey</code> will close the stream.</li>
+<li>The base websocket endpoint is: <strong>wss://testnet.binancefuture.com</strong></li>
+<li>User Data Streams are accessed at <strong>/stream?stream=\&lt;listenKey></strong></li>
+<li>User data stream payloads are <strong>not guaranteed</strong> to be in order during heavy periods; <strong>make sure to order your updates using E</strong></li>
+</ul>
+<h2 id="user-data-stream-endpoints">User data stream endpoints</h2>
+<h3 id="start-user-data-stream-user_stream">Start user data stream (USER_STREAM)</h3>
+<pre><code>POST /fapi/v1/listenKey (HMAC SHA256)
+</code></pre>
+
+<p>Start a new user data stream. The stream will close after 30 minutes unless a keepalive is sent.</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+  &quot;listenKey&quot;: &quot;pqia91ma19a5s61cv6a81va65sdf19v8a65a1a5s61cv6a81va65sdf19v8a65a1&quot;
+}
+</code></pre>
+
+<h3 id="keepalive-user-data-stream-user_stream">Keepalive user data stream (USER_STREAM)</h3>
+<pre><code>PUT /fapi/v1/listenKey (HMAC SHA256)
+</code></pre>
+
+<p>Keepalive a user data stream to prevent a time out. User data streams will close after 30 minutes. It's recommended to send a ping about every 30 minutes.</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong></p>
+<p>NONE</p>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{}
+</code></pre>
+
+<h3 id="close-user-data-stream-user_stream">Close user data stream (USER_STREAM)</h3>
+<pre><code>DELETE /fapi/v1/listenKey (HMAC SHA256)
+</code></pre>
+
+<p>Close out a user data stream.</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong></p>
+<p>NONE</p>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{}
+</code></pre>
+
+<h2 id="websocket-event">Websocket Event</h2>
+<h3 id="balance-and-position-update">balance and position update</h3>
+<p>event type is <code>ACCOUNT_UPDATE</code>.
+When balance or position get updated, will push this event.</p>
+<p><strong>Payload:</strong></p>
+<pre><code class="javascript">{
+  &quot;e&quot;: &quot;ACCOUNT_UPDATE&quot;,        // event type
+  &quot;E&quot;: 1564745798939            // event time
+  &quot;a&quot;: [                        
+    {
+      &quot;B&quot;:[                     // balances
+        {
+          &quot;a&quot;:&quot;USDT&quot;,           // asset
+          &quot;wb&quot;:&quot;122624&quot;         // wallet balance
+        },
+        {
+          &quot;a&quot;:&quot;BTC&quot;,           
+          &quot;wb&quot;:&quot;0&quot;         
+        }
+      ],
+      &quot;P&quot;:[                       // positions 
+        {
+          &quot;s&quot;:&quot;BTCUSDT&quot;,          // symbol
+          &quot;pa&quot;:&quot;1&quot;,               // position amount
+          &quot;ep&quot;:&quot;9000&quot;,            // entry price
+          &quot;up&quot;:&quot;1974.15&quot;          // unrealized profit
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+
+<h3 id="order-update">order update</h3>
+<p>When new order created, order status changed will push such event.
+event type is <code>ORDER_TRADE_UPDATE</code>.</p>
+<p><strong>Payload:</strong></p>
+<pre><code class="javascript">{
+  &quot;e&quot;: &quot;ORDER_TRADE_UPDATE&quot;,     // event type
+  &quot;E&quot;: 1564745798939             // event time
+  &quot;o&quot;:
+  {
+    &quot;s&quot;: &quot;BTCUSDT&quot;,                 // symbol
+    &quot;c&quot;: &quot;211&quot;,                    // client order id
+    &quot;S&quot;: &quot;BUY&quot;,                    // side
+    &quot;o&quot;: &quot;LIMIT&quot;,                  // order type
+    &quot;f&quot;: &quot;GTC&quot;,                    // Time in force
+    &quot;q&quot;: &quot;1.00000000&quot;,             // Original quantity
+    &quot;p&quot;: &quot;0.10264410&quot;,             // Price
+    &quot;ap&quot;: &quot;0.10264410&quot;,            // average price
+    &quot;sp&quot;: &quot;0.10264410&quot;,            // stop price
+    &quot;x&quot;: &quot;NEW&quot;,                    // execution type
+    &quot;X&quot;: &quot;NEW&quot;,                    // order status
+    &quot;r&quot;: &quot;NONE&quot;,                   // order reject reason
+    &quot;i&quot;: 4293153,                  // order id 
+    &quot;l&quot;: &quot;0.00000000&quot;,             // order last filled quantity
+    &quot;z&quot;: &quot;0.00000000&quot;,             // order filled accumulated quantity
+    &quot;L&quot;: &quot;0.00000000&quot;,             // last filled price
+    &quot;n&quot;: &quot;0&quot;,                      // commission
+    &quot;T&quot;: 1499405658657,            // order trade time
+    &quot;t&quot;: -1,                       // trade id
+    &quot;b&quot;: 100,                      // bis notional
+    &quot;a&quot;: 100                       // ask notional
+  }
+
+}
+</code></pre>
+
+<p><strong>Side</strong>
+* BUY 
+* SELL </p>
+<p><strong>order type</strong>
+* MARKET 
+* LIMIT
+* STOP</p>
+<p><strong>execution type</strong></p>
+<ul>
+<li>NEW</li>
+<li>PARTIAL_FILL</li>
+<li>FILL</li>
+<li>DONE_FOR_DAY</li>
+<li>CANCELED</li>
+<li>REPLACE</li>
+<li>PENDING_CANCEL</li>
+<li>STOPPED</li>
+<li>REJECTED</li>
+<li>SUSPENDED</li>
+<li>PENDING_NEW</li>
+<li>CALCULATED</li>
+<li>EXPIRED</li>
+<li>RESTATED</li>
+<li>PENDING_REPLACE</li>
+<li>TRADE</li>
+<li>TRADE_CORRECT</li>
+<li>TRADE_CANCEL</li>
+<li>ORDER_STATUS</li>
+</ul>
+<p><strong>order status</strong></p>
+<ul>
+<li>NEW</li>
+<li>PARTIALLY_FILLED</li>
+<li>FILLED</li>
+<li>DONE_FOR_DAY</li>
+<li>CANCELED</li>
+<li>REPLACED</li>
+<li>PENDING_CANCEL</li>
+<li>STOPPED</li>
+<li>REJECTED</li>
+<li>SUSPENDED</li>
+<li>PENDING_NEW</li>
+<li>CALCULATED</li>
+<li>EXPIRED</li>
+<li>ACCEPTED_FOR_BIDDING</li>
+<li>PENDING_REPLACE</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../errors/" class="btn btn-neutral float-right" title="ERROR INFO">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../market_data/" class="btn btn-neutral" title="MARKET DATA"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../market_data/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../errors/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
