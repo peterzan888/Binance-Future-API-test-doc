@@ -139,7 +139,6 @@ symbol | STRING | YES |
 recvWindow | LONG | NO |
 timestamp | LONG | YES |
 
-* If the symbol is not sent, orders for all symbols will be returned in an array.
 
 **Response:**
 

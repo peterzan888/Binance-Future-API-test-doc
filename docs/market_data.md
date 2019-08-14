@@ -14,6 +14,7 @@ Test connectivity to the Rest API.
 NONE
 
 **Response:**
+
 ```javascript
 {}
 ```
@@ -31,6 +32,7 @@ Test connectivity to the Rest API and get the current server time.
 NONE
 
 **Response:**
+
 ```javascript
 {
   "serverTime": 1499827319559
