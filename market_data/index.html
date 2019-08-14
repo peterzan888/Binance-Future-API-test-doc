@@ -842,7 +842,6 @@ Klines are uniquely identified by their open time.</p>
   &quot;p&quot;: &quot;0.0015&quot;,      // Price change
   &quot;P&quot;: &quot;250.00&quot;,      // Price change percent
   &quot;w&quot;: &quot;0.0018&quot;,      // Weighted average price
-  &quot;x&quot;: &quot;0.0009&quot;,      // First trade(F)-1 price (first trade before the 24hr rolling window)
   &quot;c&quot;: &quot;0.0025&quot;,      // Last price
   &quot;Q&quot;: &quot;10&quot;,          // Last quantity
   &quot;o&quot;: &quot;0.0010&quot;,      // Open price
@@ -859,21 +858,26 @@ Klines are uniquely identified by their open time.</p>
 </code></pre>
 
 <h2 id="partial-book-depth-streams">Partial Book Depth Streams</h2>
-<p>Top <strong>&lt;levels></strong> bids and asks, pushed every second. Valid <strong>&lt;levels></strong> are 5, 10, or 20.</p>
-<p><strong>Stream Name:</strong> &lt;symbol>@depth&lt;levels></p>
+<p>Bids and asks, pushed every second (if existing)</p>
+<p><strong>Stream Name:</strong> &lt;symbol>@depth</p>
 <p><strong>Payload:</strong></p>
 <pre><code class="javascript">{
-  &quot;lastUpdateId&quot;: 160,  // Last update ID
-  &quot;bids&quot;: [             // Bids to be updated
+  &quot;e&quot;: &quot;depthUpdate&quot;, // Event type
+  &quot;E&quot;: 123456789,     // Event time
+  &quot;s&quot;: &quot;BNBBTC&quot;,      // Symbol
+  &quot;U&quot;: 157,           // first update Id from last stream
+  &quot;u&quot;: 160,           // last update Id from last stream
+  &quot;pu&quot;: 149,          // last update Id in last stream（ie ‘u’ in last stream）
+  &quot;b&quot;: [              // Bids to be updated
     [
-      &quot;0.0024&quot;,         // Price level to be updated
-      &quot;10&quot;              // Quantity
+      &quot;0.0024&quot;,       // Price level to be updated
+      &quot;10&quot;            // Quantity
     ]
   ],
-  &quot;asks&quot;: [             // Asks to be updated
+  &quot;a&quot;: [              // Asks to be updated
     [
-      &quot;0.0026&quot;,         // Price level to be updated
-      &quot;100&quot;            // Quantity
+      &quot;0.0026&quot;,       // Price level to be updated
+      &quot;100&quot;          // Quantity
     ]
   ]
 }
