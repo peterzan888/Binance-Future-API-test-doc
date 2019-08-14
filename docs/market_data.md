@@ -454,7 +454,6 @@ The Aggregate Trade Streams push trade information that is aggregated for a sing
   "e": "aggTrade",  // Event type
   "E": 123456789,   // Event time
   "s": "BTCUSDT",    // Symbol
-  "a": 12345,       // Aggregate trade ID
   "p": "0.001",     // Price
   "q": "100",       // Quantity
   "f": 100,         // First trade ID
