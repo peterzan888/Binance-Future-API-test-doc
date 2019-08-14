@@ -437,15 +437,15 @@ symbol | STRING | YES |
 
 * The base endpoint is: **wss://testnet.binancefuture.com**
 * Streams can be access either in a single raw stream or a combined stream
-* Combined streams are accessed at **/stream?streams=\<streamName1\>/\<streamName2\>/\<streamName3\>**
-* Combined stream events are wrapped as follows: **{"stream":"\<streamName\>","data":\<rawPayload\>}**
+* Combined streams are accessed at **/stream?streams=<streamName1\>/<streamName2\>/<streamName3\>**
+* Combined stream events are wrapped as follows: **{"stream":"<streamName\>","data":<rawPayload\>}**
 * All symbols for streams are **lowercase**
 * The websocket server will send a `ping frame` every 3 minutes. If the websocket server does not receive a `pong frame` back from the connection within a 10 minute period, the connection will be disconnected. Unsolicited `pong frames` are allowed.
 
 ## Aggregate Trade Streams
 The Aggregate Trade Streams push trade information that is aggregated for a single taker order.
 
-**Stream Name:** \<symbol\>@aggTrade
+**Stream Name:** <symbol\>@aggTrade
 
 **Payload:**
 
@@ -466,7 +466,7 @@ The Aggregate Trade Streams push trade information that is aggregated for a sing
 ## Mark Price Stream
 Mark price for a single symbol pushed every minute. 
 
-**Stream Name:** \<symbol\>@markPrice
+**Stream Name:** <symbol\>@markPrice
 
 **Payload:**
 
@@ -505,7 +505,7 @@ m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
 * 1w
 * 1M
 
-**Stream Name:** \<symbol\>@kline_\<interval\>
+**Stream Name:** <symbol\>@kline_<interval\>
 
 **Payload:**
 
@@ -539,7 +539,7 @@ m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
 ## Individual Symbol Mini Ticker Stream
 24hr rolling window mini-ticker statistics for a single symbol pushed every second. These are NOT the statistics of the UTC day, but a 24hr rolling window from requestTime to 24hrs before.
 
-**Stream Name:** \<symbol\>@miniTicker
+**Stream Name:** <symbol\>@miniTicker
 
 **Payload:**
 ```javascript
@@ -560,7 +560,7 @@ m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
 ## Individual Symbol Ticker Streams
 24hr rollwing window ticker statistics for a single symbol pushed every second. These are NOT the statistics of the UTC day, but a 24hr rolling window from requestTime to 24hrs before.
 
-**Stream Name:** \<symbol\>@ticker
+**Stream Name:** <symbol\>@ticker
 
 **Payload:**
 
@@ -590,9 +590,9 @@ m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
 
 
 ## Partial Book Depth Streams
-Top **\<levels\>** bids and asks, pushed every second. Valid **\<levels\>** are 5, 10, or 20.
+Top **<levels\>** bids and asks, pushed every second. Valid **<levels\>** are 5, 10, or 20.
 
-**Stream Name:** \<symbol\>@depth\<levels\>
+**Stream Name:** <symbol\>@depth<levels\>
 
 **Payload:**
 ```javascript

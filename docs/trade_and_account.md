@@ -337,7 +337,7 @@ Otherwise most recent orders are returned.
 * Doing a `PUT` on a `listenKey` will extend its validity for 30 minutes.
 * Doing a `DELETE` on a `listenKey` will close the stream.
 * The base websocket endpoint is: **wss://testnet.binancefuture.com**
-* User Data Streams are accessed at **/stream?stream=\<listenKey\>**
+* User Data Streams are accessed at **/stream?stream=<listenKey\>**
 * User data stream payloads are **not guaranteed** to be in order during heavy periods; **make sure to order your updates using E**
 
 
