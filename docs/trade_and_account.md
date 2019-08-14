@@ -469,7 +469,6 @@ event type is `ORDER_TRADE_UPDATE`.
     "sp": "0.10264410",            // stop price
     "x": "NEW",                    // execution type
     "X": "NEW",                    // order status
-    "r": "NONE",                   // order reject reason
     "i": 4293153,                  // order id 
     "l": "0.00000000",             // order last filled quantity
     "z": "0.00000000",             // order filled accumulated quantity
@@ -483,6 +482,11 @@ event type is `ORDER_TRADE_UPDATE`.
   
 }
 ```
+
+
+
+
+
 **Side**
 * BUY 
 * SELL 
