@@ -572,7 +572,6 @@ m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
   "p": "0.0015",      // Price change
   "P": "250.00",      // Price change percent
   "w": "0.0018",      // Weighted average price
-  "x": "0.0009",      // First trade(F)-1 price (first trade before the 24hr rolling window)
   "c": "0.0025",      // Last price
   "Q": "10",          // Last quantity
   "o": "0.0010",      // Open price
@@ -589,25 +588,32 @@ m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
 ```
 
 
-## Partial Book Depth Streams
-Top **<levels\>** bids and asks, pushed every second. Valid **<levels\>** are 5, 10, or 20.
 
-**Stream Name:** <symbol\>@depth<levels\>
+## Partial Book Depth Streams
+Bids and asks, pushed every second (if existing)
+
+**Stream Name:** <symbol\>@depth
 
 **Payload:**
+
 ```javascript
 {
-  "lastUpdateId": 160,  // Last update ID
-  "bids": [             // Bids to be updated
+  "e": "depthUpdate", // Event type
+  "E": 123456789,     // Event time
+  "s": "BNBBTC",      // Symbol
+  "U": 157,           // first update Id from last stream
+  "u": 160,           // last update Id from last stream
+  "pu": 149,          // last update Id in last stream（ie ‘u’ in last stream）
+  "b": [              // Bids to be updated
     [
-      "0.0024",         // Price level to be updated
-      "10"              // Quantity
+      "0.0024",       // Price level to be updated
+      "10"            // Quantity
     ]
   ],
-  "asks": [             // Asks to be updated
+  "a": [              // Asks to be updated
     [
-      "0.0026",         // Price level to be updated
-      "100"            // Quantity
+      "0.0026",       // Price level to be updated
+      "100"          // Quantity
     ]
   ]
 }
