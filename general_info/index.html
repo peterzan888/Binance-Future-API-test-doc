@@ -251,8 +251,8 @@
 <li>An additional parameter, <code>recvWindow</code>, may be sent to specify the number of
   milliseconds after <code>timestamp</code> the request is valid for. If <code>recvWindow</code>
   is not sent, <strong>it defaults to 5000</strong>.</li>
-<li>The logic is as follows:
-  <code>javascript
+<li>The logic is as follows:</li>
+<li><code>javascript
   if (timestamp &lt; (serverTime + 1000) &amp;&amp; (serverTime - timestamp) &lt;= recvWindow) {
     // process request
   } else {
@@ -408,7 +408,7 @@ There is no &amp; between "GTC" and "quantity=1".</p>
 <p><strong>Time in force (timeInForce):</strong></p>
 <ul>
 <li>GTC</li>
-<li>OC</li>
+<li>IOC</li>
 <li>FOK</li>
 </ul>
 <p><strong>Kline/Candlestick chart intervals:</strong></p>
@@ -487,11 +487,11 @@ There is no &amp; between "GTC" and "quantity=1".</p>
 <h3 id="lot_size">LOT_SIZE</h3>
 <p>The <code>LOT_SIZE</code> filter defines the <code>quantity</code> (aka "lots" in auction terms) rules for a symbol. There are 3 parts:</p>
 <ul>
-<li><code>minQty</code> defines the minimum <code>quantity</code>/<code>icebergQty</code> allowed.</li>
-<li><code>maxQty</code> defines the maximum <code>quantity</code>/<code>icebergQty</code> allowed.</li>
-<li><code>stepSize</code> defines the intervals that a <code>quantity</code>/<code>icebergQty</code> can be increased/decreased by.</li>
+<li><code>minQty</code> defines the minimum <code>quantity</code> allowed.</li>
+<li><code>maxQty</code> defines the maximum <code>quantity</code> allowed.</li>
+<li><code>stepSize</code> defines the intervals that a <code>quantity</code> can be increased/decreased by.</li>
 </ul>
-<p>In order to pass the <code>lot size</code>, the following must be true for <code>quantity</code>/<code>icebergQty</code>:</p>
+<p>In order to pass the <code>lot size</code>, the following must be true for <code>quantity</code>:</p>
 <ul>
 <li><code>quantity</code> &gt;= <code>minQty</code></li>
 <li><code>quantity</code> &lt;= <code>maxQty</code></li>

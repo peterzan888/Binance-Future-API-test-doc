@@ -213,20 +213,24 @@ NONE</p>
                 {
                     &quot;filterType&quot;: &quot;PRICE_FILTER&quot;,
                     &quot;maxPrice&quot;: &quot;10000000&quot;,
-                    &quot;minPrice&quot;: &quot;0&quot;,
-                    &quot;tickSize&quot;: &quot;0&quot;
+                    &quot;minPrice&quot;: &quot;0.00000100&quot;,
+                    &quot;tickSize&quot;: &quot;0.00000100&quot;
                 },
                 {
                     &quot;filterType&quot;: &quot;LOT_SIZE&quot;,
                     &quot;maxQty&quot;: &quot;10000000&quot;,
-                    &quot;minQty&quot;: &quot;0&quot;,
-                    &quot;stepSize&quot;: &quot;0&quot;
+                    &quot;minQty&quot;: &quot;0.00100000&quot;,
+                    &quot;stepSize&quot;: &quot;0.00100000&quot;
                 },
                 {
                     &quot;filterType&quot;: &quot;MARKET_LOT_SIZE&quot;,
-                    &quot;maxQty&quot;: &quot;0&quot;,
-                    &quot;minQty&quot;: &quot;0&quot;,
-                    &quot;stepSize&quot;: &quot;0&quot;
+                    &quot;maxQty&quot;: &quot;10000000&quot;,
+                    &quot;minQty&quot;: &quot;0.00100000&quot;,
+                    &quot;stepSize&quot;: &quot;0.00100000&quot;
+                },
+                {
+                    &quot;filterType&quot;: &quot;MAX_NUM_ORDERS&quot;,
+                    &quot;limit&quot;: 25
                 }
             ],
             &quot;maintMarginPercent&quot;: &quot;2.5000%&quot;,
@@ -242,7 +246,7 @@ NONE</p>
             &quot;symbol&quot;: &quot;BTCUSDT&quot;,
             &quot;timeInForce&quot;: [
                 &quot;GTC&quot;, 
-                &quot;OC&quot;, 
+                &quot;IOC&quot;, 
                 &quot;FOK&quot;
             ]
         }

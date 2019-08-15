@@ -503,11 +503,11 @@ The following messages which will indicate the specific error:</p>
 <tbody>
 <tr>
 <td>"Unknown order sent."</td>
-<td>The order (by either <code>orderId</code>, <code>clOrdId</code>, <code>origClOrdId</code>) could not be found</td>
+<td>The order (by either <code>orderId</code>, <code>clientOrderId</code>, <code>origClientOrderId</code>) could not be found</td>
 </tr>
 <tr>
 <td>"Duplicate order sent."</td>
-<td>The <code>clOrdId</code> is already in use</td>
+<td>The <code>clientOrderId</code> is already in use</td>
 </tr>
 <tr>
 <td>"Market is closed."</td>
@@ -520,10 +520,6 @@ The following messages which will indicate the specific error:</p>
 <tr>
 <td>"Market orders are not supported for this symbol."</td>
 <td><code>MARKET</code> is not enabled on the symbol</td>
-</tr>
-<tr>
-<td>"Iceberg orders are not supported for this symbol."</td>
-<td><code>icebergQty</code> is not enabled on the symbol</td>
 </tr>
 <tr>
 <td>"Stop loss orders are not supported for this symbol."</td>
@@ -546,24 +542,20 @@ The following messages which will indicate the specific error:</p>
 <td><code>price</code> * <code>quantity</code> is too low</td>
 </tr>
 <tr>
-<td>"IcebergQty exceeds QTY."</td>
-<td><code>icebergQty</code> must be less than the order quantity</td>
-</tr>
-<tr>
 <td>"This action disabled is on this account."</td>
 <td>Contact customer support; some actions have been disabled on the account.</td>
 </tr>
 <tr>
 <td>"Unsupported order combination"</td>
-<td>The <code>orderType</code>, <code>timeInForce</code>, <code>stopPrice</code>, and/or <code>icebergQty</code> combination isn't allowed.</td>
+<td>The <code>orderType</code>, <code>timeInForce</code>, <code>stopPrice</code> combination isn't allowed.</td>
 </tr>
 <tr>
 <td>"Order would trigger immediately."</td>
 <td>The order's stop price is not valid when compared to the last traded price.</td>
 </tr>
 <tr>
-<td>"Cancel order is invalid. Check origClOrdId and orderId."</td>
-<td>No <code>origClOrdId</code> or <code>orderId</code> was sent in.</td>
+<td>"Cancel order is invalid. Check origClientOrderId and orderId."</td>
+<td>No <code>origClientOrderId</code> or <code>orderId</code> was sent in.</td>
 </tr>
 <tr>
 <td>"Order would immediately match and take."</td>
