@@ -31,6 +31,8 @@ Type | Additional mandatory parameters
 `MARKET` | `quantity`
 `STOP` | `quantity`,  `price`, `stopPrice`
 
+* Order with type `MARKET`, parameter `timeInForce` cannot be sent.
+* Order with type `STOP`,  parameter `timeInForce` can be sent ( default `GTC`).
 
 
 
