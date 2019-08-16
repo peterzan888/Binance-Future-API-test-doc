@@ -413,7 +413,7 @@
 <tr>
 <td>symbol</td>
 <td>STRING</td>
-<td>YES</td>
+<td>NO</td>
 <td></td>
 </tr>
 <tr>
@@ -451,6 +451,9 @@
 ]
 </code></pre>
 
+<ul>
+<li>If the symbol is not sent, orders for all symbols will be returned in an array.</li>
+</ul>
 <h2 id="all-orders-user_data">All orders (<em>USER_DATA</em>)</h2>
 <pre><code>GET /fapi/v1/allOrders (HMAC SHA256)
 </code></pre>
@@ -476,7 +479,7 @@
 <td></td>
 </tr>
 <tr>
-<td>fromId</td>
+<td>orderId</td>
 <td>LONG</td>
 <td>NO</td>
 <td></td>
@@ -515,9 +518,8 @@
 </table>
 <p><strong>Notes:</strong></p>
 <ul>
-<li>At least one of <code>fromId</code>, <code>stratTime</code>, and <code>endTime</code> must be sent.</li>
-<li>If <code>fromId</code> is set, it will get orders &gt;= that <code>orderId</code>. Otherwise most recent orders are returned.</li>
-<li>For some historical orders <code>cummulativeQuoteQty</code> will be &lt; 0, meaning the data is not available at this time.</li>
+<li>If <code>orderId</code> is set, it will get orders &gt;= that <code>orderId</code>. Otherwise most recent orders are returned.</li>
+<li>If </li>
 </ul>
 <p><strong>Response:</strong></p>
 <pre><code class="javascript">[
@@ -702,7 +704,6 @@
 </table>
 <p><strong>Notes:</strong></p>
 <ul>
-<li>At least one of <code>fromId</code>, <code>stratTime</code>, and <code>endTime</code> must be sent.</li>
 <li>If <code>fromId</code> is set, it will get orders &gt;= that <code>fromId</code>.
 Otherwise most recent orders are returned.</li>
 </ul>
@@ -716,7 +717,7 @@ Otherwise most recent orders are returned.</li>
     &quot;qty&quot;: &quot;12.00000000&quot;,
     &quot;quoteQty&quot;: &quot;48.000012&quot;,
     &quot;commission&quot;: &quot;10.10000000&quot;,
-    &quot;commissionAsset&quot;: &quot;BNB&quot;,
+    &quot;commissionAsset&quot;: &quot;USDT&quot;,
     &quot;time&quot;: 1499865549590,
     &quot;isBuyer&quot;: true,
     &quot;isMaker&quot;: false,
