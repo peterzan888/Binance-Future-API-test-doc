@@ -903,7 +903,8 @@ event type is <code>ORDER_TRADE_UPDATE</code>.</p>
     &quot;l&quot;: &quot;0.00000000&quot;,             // order last filled quantity
     &quot;z&quot;: &quot;0.00000000&quot;,             // order filled accumulated quantity
     &quot;L&quot;: &quot;0.00000000&quot;,             // last filled price
-    &quot;n&quot;: &quot;0&quot;,                      // commission
+    &quot;N&quot;: &quot;USDT&quot;,                   // commission Asset, will not push if no commission
+    &quot;n&quot;: &quot;0&quot;,                      // commission, will not push if no commission
     &quot;T&quot;: 1499405658657,            // order trade time
     &quot;t&quot;: -1,                       // trade id
     &quot;b&quot;: 100,                      // bis notional
@@ -913,52 +914,49 @@ event type is <code>ORDER_TRADE_UPDATE</code>.</p>
 }
 </code></pre>
 
-<p><strong>Side</strong>
-* BUY 
-* SELL </p>
-<p><strong>order type</strong>
-* MARKET 
-* LIMIT
-* STOP</p>
+<p><strong>Side</strong></p>
+<ul>
+<li>BUY </li>
+<li>SELL </li>
+</ul>
+<p><strong>order type</strong></p>
+<ul>
+<li>MARKET </li>
+<li>LIMIT</li>
+<li>STOP</li>
+</ul>
 <p><strong>execution type</strong></p>
 <ul>
 <li>NEW</li>
 <li>PARTIAL_FILL</li>
 <li>FILL</li>
-<li>DONE_FOR_DAY</li>
 <li>CANCELED</li>
-<li>REPLACE</li>
 <li>PENDING_CANCEL</li>
-<li>STOPPED</li>
 <li>REJECTED</li>
-<li>SUSPENDED</li>
-<li>PENDING_NEW</li>
 <li>CALCULATED</li>
 <li>EXPIRED</li>
-<li>RESTATED</li>
-<li>PENDING_REPLACE</li>
 <li>TRADE</li>
-<li>TRADE_CORRECT</li>
-<li>TRADE_CANCEL</li>
-<li>ORDER_STATUS</li>
+<li>RESTATED </li>
 </ul>
 <p><strong>order status</strong></p>
 <ul>
 <li>NEW</li>
 <li>PARTIALLY_FILLED</li>
 <li>FILLED</li>
-<li>DONE_FOR_DAY</li>
 <li>CANCELED</li>
 <li>REPLACED</li>
 <li>PENDING_CANCEL</li>
 <li>STOPPED</li>
 <li>REJECTED</li>
-<li>SUSPENDED</li>
-<li>PENDING_NEW</li>
-<li>CALCULATED</li>
 <li>EXPIRED</li>
-<li>ACCEPTED_FOR_BIDDING</li>
-<li>PENDING_REPLACE</li>
+<li>NEW_INSURANCE</li>
+<li>NEW_ADL</li>
+</ul>
+<p><strong>Time in force</strong></p>
+<ul>
+<li>GTC</li>
+<li>IOC</li>
+<li>FOK</li>
 </ul>
               
             </div>
