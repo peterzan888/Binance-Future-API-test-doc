@@ -77,37 +77,42 @@ NONE
  				{
  					"filterType": "PRICE_FILTER",
      				"maxPrice": "10000000",
-     				"minPrice": "0",
-     				"tickSize": "0"
+     				"minPrice": "0.00000100",
+     				"tickSize": "0.00000100"
      			},
     			{
     				"filterType": "LOT_SIZE",
      				"maxQty": "10000000",
-     				"minQty": "0",
-     				"stepSize": "0"
+     				"minQty": "0.00100000",
+     				"stepSize": "0.00100000"
      			},
     			{
     				"filterType": "MARKET_LOT_SIZE",
-     				"maxQty": "0",
-     				"minQty": "0",
-     				"stepSize": "0"
-     			}
+     				"maxQty": "10000000",
+     				"minQty": "0.00100000",
+     				"stepSize": "0.00100000"
+     			},
+     			{
+    				"filterType": "MAX_NUM_ORDERS",
+    				"limit": 100
+  				}
     		],
-   			"maintMarginPercent": "2.5000%",
+   			"maintMarginPercent": "2.5000",
    			"pricePrecision": 2,
    			"quantityPrecision": 3,
-   			"requiredMarginPercent": "5.0000%",
+   			"requiredMarginPercent": "5.0000",
    			"status": "TRADING",
-   			"supportOrderType": [
+   			"OrderType": [
    				"LIMIT", 
    				"MARKET", 
    				"STOP"
    			],
    			"symbol": "BTCUSDT",
    			"timeInForce": [
-   				"GTC", 
-   				"OC", 
-   				"FOK"
+   				"GTC",    // Good Till Cancel 
+   				"IOC",    // Immediate or Cancel
+   				"FOK",    // Fill or Kill
+   				"GTX"     // Good Till Crossing
    			]
    		}
    	],
@@ -518,7 +523,7 @@ m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
     "t": 123400000, // Kline start time
     "T": 123460000, // Kline close time
     "s": "BTCUSDT",  // Symbol
-    "i": "1m",      // Interval
+    "i": "1m",      // Interva\
     "f": 100,       // First trade ID
     "L": 200,       // Last trade ID
     "o": "0.0010",  // Open price
@@ -542,6 +547,7 @@ m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
 **Stream Name:** <symbol\>@miniTicker
 
 **Payload:**
+
 ```javascript
   {
     "e": "24hrMiniTicker",  // Event type
@@ -600,7 +606,7 @@ Bids and asks, pushed every second (if existing)
 {
   "e": "depthUpdate", // Event type
   "E": 123456789,     // Event time
-  "s": "BNBBTC",      // Symbol
+  "s": "BTCUSDT",      // Symbol
   "U": 157,           // first update Id from last stream
   "u": 160,           // last update Id from last stream
   "pu": 149,          // last update Id in last stream（ie ‘u’ in last stream）

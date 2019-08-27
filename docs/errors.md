@@ -206,22 +206,20 @@ The following messages which will indicate the specific error:
 
 Error message | Description
 ------------ | ------------
-"Unknown order sent." | The order (by either `orderId`, `clOrdId`, `origClOrdId`) could not be found
-"Duplicate order sent." | The `clOrdId` is already in use
+"Unknown order sent." | The order (by either `orderId`, `clientOrderId`, `origClientOrderId`) could not be found
+"Duplicate order sent." | The `clientOrderId` is already in use
 "Market is closed." | The symbol is not trading
 "Account has insufficient balance for requested action." | Not enough funds to complete the action
 "Market orders are not supported for this symbol." | `MARKET` is not enabled on the symbol
-"Iceberg orders are not supported for this symbol." | `icebergQty` is not enabled on the symbol
 "Stop loss orders are not supported for this symbol." | `STOP_LOSS` is not enabled on the symbol
 "Stop loss limit orders are not supported for this symbol." | `STOP_LOSS_LIMIT` is not enabled on the symbol
 "Take profit orders are not supported for this symbol." | `TAKE_PROFIT` is not enabled on the symbol
 "Take profit limit orders are not supported for this symbol." | `TAKE_PROFIT_LIMIT` is not enabled on the symbol
 "Price * QTY is zero or less." | `price` * `quantity` is too low
-"IcebergQty exceeds QTY." | `icebergQty` must be less than the order quantity
 "This action disabled is on this account." | Contact customer support; some actions have been disabled on the account.
-"Unsupported order combination" | The `orderType`, `timeInForce`, `stopPrice`, and/or `icebergQty` combination isn't allowed.
+"Unsupported order combination" | The `orderType`, `timeInForce`, `stopPrice` combination isn't allowed.
 "Order would trigger immediately." | The order's stop price is not valid when compared to the last traded price.
-"Cancel order is invalid. Check origClOrdId and orderId." | No `origClOrdId` or `orderId` was sent in.
+"Cancel order is invalid. Check origClientOrderId and orderId." | No `origClientOrderId` or `orderId` was sent in.
 "Order would immediately match and take." | `LIMIT_MAKER` order type would immediately match and trade, and not be a pure maker order.
 
 ## -9xxx Filter failures
