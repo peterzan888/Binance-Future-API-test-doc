@@ -1,14 +1,8 @@
-site_name: Future API Docs
+site_name: Futures testnet API Docs
 nav:
-    - README.md
-    - README_CN.md
-    - rest-api.md
-    - rest-api_CN.md
-    - user-data-stream.md 
-    - user-data-stream_CN.md
-    - web-socket-streams.md 
-    - web-socket-streams_CN.md 
-    - errors.md
+    - GENERAL INFO: general_info.md
+    - MARKET DATA: market_data.md 
+    - ACCOUNT/TRADE: trade_and_account.md 
+    - ERROR INFO: errors.md
+     
 theme: readthedocs
-#theme: windmill
-#extra_css: [extra.css]
