@@ -733,14 +733,23 @@ Klines are uniquely identified by their open time.</p>
 <ul>
 <li>The base endpoint is: <strong>wss://testnet.binancefuture.com</strong></li>
 <li>Streams can be access either in a single raw stream or a combined stream</li>
-<li>Combined streams are accessed at <strong>/stream?streams=&lt;streamName1>/&lt;streamName2>/&lt;streamName3></strong></li>
+<li>
+<p>Combined streams are accessed at <strong>/stream?streams=&lt;streamName1>/&lt;streamName2>/&lt;streamName3></strong></p>
+<p>for example:</p>
+</li>
+</ul>
+<pre><code class="shell">    wss://testnet.binancefuture.com/stream?streams=btcusdt@markPrice/btcusdt@aggTrade/btcusdt@kline_1m
+</code></pre>
+
+<ul>
 <li>Combined stream events are wrapped as follows: <strong>{"stream":"&lt;streamName>","data":&lt;rawPayload>}</strong></li>
 <li>All symbols for streams are <strong>lowercase</strong></li>
 <li>The websocket server will send a <code>ping frame</code> every 3 minutes. If the websocket server does not receive a <code>pong frame</code> back from the connection within a 10 minute period, the connection will be disconnected. Unsolicited <code>pong frames</code> are allowed.</li>
 </ul>
 <h2 id="aggregate-trade-streams">Aggregate Trade Streams</h2>
 <p>The Aggregate Trade Streams push trade information that is aggregated for a single taker order.</p>
-<p><strong>Stream Name:</strong> &lt;symbol>@aggTrade</p>
+<p><strong>Stream Name:</strong> </p>
+<p><code>&lt;symbol\&gt;@aggTrade</code></p>
 <p><strong>Payload:</strong></p>
 <pre><code class="javascript">{
   &quot;e&quot;: &quot;aggTrade&quot;,  // Event type
@@ -757,7 +766,7 @@ Klines are uniquely identified by their open time.</p>
 
 <h2 id="mark-price-stream">Mark Price Stream</h2>
 <p>Mark price for a single symbol pushed every minute. </p>
-<p><strong>Stream Name:</strong> &lt;symbol>@markPrice</p>
+<p><strong>Stream Name:</strong> <code>&lt;symbol\&gt;@markPrice</code></p>
 <p><strong>Payload:</strong></p>
 <pre><code class="javascript">  {
     &quot;e&quot;: &quot;markPriceUpdate&quot;,  // Event type
@@ -790,7 +799,8 @@ Klines are uniquely identified by their open time.</p>
 <li>1w</li>
 <li>1M</li>
 </ul>
-<p><strong>Stream Name:</strong> &lt;symbol>@kline_&lt;interval></p>
+<p><strong>Stream Name:</strong> </p>
+<p><code>&lt;symbol\&gt;@kline_&lt;interval\&gt;</code></p>
 <p><strong>Payload:</strong></p>
 <pre><code class="javascript">{
   &quot;e&quot;: &quot;kline&quot;,     // Event type
