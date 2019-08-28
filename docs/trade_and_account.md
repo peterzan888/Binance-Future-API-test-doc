@@ -200,7 +200,7 @@ timestamp | LONG | YES |
     "clientOrderId": "myOrder1",
     "price": "0.1",
     "origQty": "1.0",
-    "cumQty": "1.0",
+    "executedQty": "1.0",
     "cumQuote": "10.0",
     "status": "NEW",
     "timeInForce": "GTC",

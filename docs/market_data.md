@@ -144,7 +144,7 @@ Name | Type | Mandatory | Description
 symbol | STRING | YES |
 limit | INT | NO | Default 100; max 1000. Valid limits:[5, 10, 20, 50, 100, 500, 1000]
 
-**Caution:** setting limit=0 can return a lot of data.
+
 
 **Response:**
 
@@ -264,7 +264,6 @@ limit | INT | NO | Default 500; max 1000.
     "l": 27781,         // Last tradeId
     "T": 1498793709153, // Timestamp
     "m": true,          // Was the buyer the maker?
-    "M": true           // Was the trade the best price match?
   }
 ]
 ```
@@ -443,6 +442,12 @@ symbol | STRING | YES |
 * The base endpoint is: **wss://testnet.binancefuture.com**
 * Streams can be access either in a single raw stream or a combined stream
 * Combined streams are accessed at **/stream?streams=<streamName1\>/<streamName2\>/<streamName3\>**
+
+	for example:
+	
+```shell
+	wss://testnet.binancefuture.com/stream?streams=btcusdt@markPrice/btcusdt@aggTrade/btcusdt@kline_1m
+```
 * Combined stream events are wrapped as follows: **{"stream":"<streamName\>","data":<rawPayload\>}**
 * All symbols for streams are **lowercase**
 * The websocket server will send a `ping frame` every 3 minutes. If the websocket server does not receive a `pong frame` back from the connection within a 10 minute period, the connection will be disconnected. Unsolicited `pong frames` are allowed.
@@ -450,7 +455,9 @@ symbol | STRING | YES |
 ## Aggregate Trade Streams
 The Aggregate Trade Streams push trade information that is aggregated for a single taker order.
 
-**Stream Name:** <symbol\>@aggTrade
+**Stream Name:** 
+
+`<symbol\>@aggTrade`
 
 **Payload:**
 
@@ -471,7 +478,7 @@ The Aggregate Trade Streams push trade information that is aggregated for a sing
 ## Mark Price Stream
 Mark price for a single symbol pushed every minute. 
 
-**Stream Name:** <symbol\>@markPrice
+**Stream Name:** `<symbol\>@markPrice`
 
 **Payload:**
 
@@ -510,7 +517,9 @@ m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
 * 1w
 * 1M
 
-**Stream Name:** <symbol\>@kline_<interval\>
+**Stream Name:** 
+
+`<symbol\>@kline_<interval\>`
 
 **Payload:**
 
