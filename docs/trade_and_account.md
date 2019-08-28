@@ -531,4 +531,5 @@ event type is `ORDER_TRADE_UPDATE`.
 * GTC
 * IOC
 * FOK
+* GTX
 
